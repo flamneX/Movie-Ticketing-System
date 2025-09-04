@@ -14,10 +14,15 @@
 
         <main>
             This is the Movies Page
+            <div id="movies"></div>
         </main>
 
         <?php
             include("../include/footer.php");
         ?>
+        <script src="script.js"></script>
+        <script>
+            displayMovie("movies", "tt2250912")
+        </script>
     </body>
 </html>
