@@ -14,8 +14,8 @@
         </div>
 
         <main>
-            <h1>Movies</h1>
-            <div id="movieContainer"></div>
+            <h1>Details</h1>
+            <div id="vid"></div>
         </main>
 
         <?php
@@ -23,7 +23,11 @@
         ?>
         <script src="script.js"></script>
         <script>
-            window.onload = displayMovie("movieContainer");
+            window.onload = () => {
+                const params = new URLSearchParams(window.location.search);
+                const imdbId = params.get("id");
+                displayPreview(imdbId);
+            }
         </script>
     </body>
 </html>
