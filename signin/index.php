@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Absolute Cinema</title>
-        <link rel="stylesheet" href="../style/styles.css"/>
+        <link rel="stylesheet" href="../styles.css"/>
     </head>
     <body>
         <div class="headContainer">

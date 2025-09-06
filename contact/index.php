@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Contact Us - Absolute Cinema</title>
-    <link rel="stylesheet" href="../style/styles.css"/>
+    <link rel="stylesheet" href="../styles.css"/>
     <style>
       .error { color: red; font-size: 0.9rem; }
       .is-invalid { border-color: #e11d48; outline: none; }

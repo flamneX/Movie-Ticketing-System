@@ -1,0 +1,46 @@
+-- Creating the database
+DROP DATABASE IF EXISTS movie_ticketing;
+CREATE DATABASE IF NOT EXISTS movie_ticketing CHARACTER SET UTF8MB4;
+
+USE movie_ticketing;
+
+-- Creating the user table
+DROP TABLE IF EXISTS user;
+CREATE TABLE IF NOT EXISTS user (
+  userID INT AUTO_INCREMENT NOT NULL,
+  userName VARCHAR(50) NOT NULL,
+  userEmail VARCHAR(50) NOT NULL,
+  userPhoneNo VARCHAR(50) NOT NULL,
+  PRIMARY KEY (userID)
+);
+
+-- Creating the whishlist table
+DROP TABLE IF EXISTS wishlist;
+CREATE TABLE IF NOT EXISTS wishlist (
+    userID INT NOT NULL,
+    movieID VARCHAR(50) NOT NULL,
+    PRIMARY KEY (userID, movieID),
+    FOREIGN KEY (userID) REFERENCES user(userID)
+);
+
+-- Creating the Transaction Table
+DROP TABLE IF EXISTS transaction;
+CREATE TABLE IF NOT EXISTS transaction (
+    transactionID INT AUTO_INCREMENT NOT NULL,
+    userID INT NOT NULL,
+    totalPrice FLOAT(10) NOT NULL,
+    PRIMARY KEY (transactionID),
+    FOREIGN KEY (userID) REFERENCES user(userID)
+);
+
+-- Creating the Ticket Table
+DROP TABLE IF EXISTS ticket;
+CREATE TABLE IF NOT EXISTS ticket (
+    ticketID INT AUTO_INCREMENT NOT NULL,
+    userID INT NOT NULL,
+    movieID VARCHAR(50) NOT NULL,
+    transactionID INT NOT NULL,
+    PRIMARY KEY (ticketID),
+    FOREIGN KEY (userID) REFERENCES user(userID),
+    FOREIGN KEY (transactionID) REFERENCES transaction(transactionID)
+);
