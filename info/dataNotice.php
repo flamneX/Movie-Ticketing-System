@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Absolute Cinema</title>
-        <link rel="stylesheet" href="../style/styles.css"/>
+        <link rel="stylesheet" href="../styles.css"/>
         <style>
             li, p {
                 font-weight: 500;
