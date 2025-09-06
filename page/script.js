@@ -1,9 +1,25 @@
-// fetch movie json using IMDB ID
-async function fetchMovie(imdbId) {
+// fetch movie detail json using IMDB ID
+async function fetchMovieDetail(imdbId) {
     try {
-        const url = `https://imdb.iamidiotareyoutoo.com/search?q=${imdbId}`; // public api key
+        const url = `https://api.imdbapi.dev/titles/${imdbId}`;
         const response = await fetch(url);
         const data = await response.json();
+        console.log(data);
+
+        return data;
+    } catch (error) {
+        console.error("Error fetching movie:", error);
+        return null;
+    }
+}
+
+// fetch movie preview video json using IMDB ID
+async function fetchMoviePreview(imdbId) {
+     try {
+        const url = `https://api.imdbapi.dev/titles/${imdbId}/videos`;
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
 
         return data;
     } catch (error) {
@@ -14,27 +30,84 @@ async function fetchMovie(imdbId) {
 
 // list of movies to display
 const SERIES_IDs = [
-  "tt1773185", // Madoka Magica
-  "tt7078180", // Violet Evergarden
+  "tt2457282",
+  "tt30648377",
+  "tt8091892",
+  "tt4054952",
+  "tt1587156",
+  "tt8092118",
+  "tt1909796",
+  "tt12007484",
+  "tt9534948",
+  "tt13997358",
 ];
 
-// display the movie
+// display the movies
 async function displayMovie(containerId) {
     const container = document.getElementById(containerId);
 
-    // display each item in the series
+    let counter = 0;
+    let rowDiv = document.createElement("div");
+    rowDiv.className = "movie-row";
+
     for (const id of SERIES_IDs) {
-    const data = await fetchMovie(id);
-    if (!data || !data.description || !data.description.length) continue;
-    const movie = data.description[0];
-    const movieDiv = document.createElement("div");
-    movieDiv.className = "movie-card";
-    movieDiv.innerHTML = `
-      <h2>${movie["#TITLE"]}</h2>
-      <img src="${movie["#IMG_POSTER"]}" alt="${movie["#TITLE"]}" width="200">
-      <p><b>Year:</b> ${movie["#YEAR"]}</p>
-      <p><b>Actors:</b> ${movie["#ACTORS"]}</p>
-    `;
-    container.appendChild(movieDiv);
+        const movie = await fetchMovieDetail(id);
+        if(!movie) continue;
+
+        const movieDiv = document.createElement("div");
+        movieDiv.className = "movie-card";
+        movieDiv.innerHTML = `<img src="${movie.primaryImage.url}" alt="${movie.originalTitle}">`;
+        const movieOverlay = document.createElement("div");
+        movieOverlay.className = "overlay";
+
+        movieOverlay.innerHTML = `
+        <div style="height: 410px">
+          <h3>${movie.primaryTitle}</h3>
+          <h5><i class="fa-solid fa-tag" style="color: #A76BCE;"></i> ${movie.genres?.slice(0,3).join(', ') || 'N/A'}</h5>
+          <h5><i class="fa-solid fa-clock" style="color: #A76BCE;"></i> ${movie.runtimeSeconds ? movie.runtimeSeconds / 60 : 'N/A'} mins</h5>
+          <h5><i class="fa-solid fa-language" style="color: #A76BCE;"></i> ${movie.spokenLanguages && movie.spokenLanguages.length > 0 ? movie.spokenLanguages[0].name : 'N/A'}</h5>
+        </div>
+        <div style="display: flex; justify-content: center;">
+          <button><a href="movie-detail.php?id=${movie.id}">BUY NOW<a></button>
+        </div>
+        `;
+        movieDiv.appendChild(movieOverlay);
+
+        rowDiv.appendChild(movieDiv);
+        counter++;
+
+        if (counter === 4) {
+            container.appendChild(rowDiv);
+            rowDiv = document.createElement("div");
+            rowDiv.className = "movie-row";
+            counter = 0;
+        }
+    }
+
+    // Append any remaining movies in the last row
+    if (counter > 0) {
+        container.appendChild(rowDiv);
+    }
+}
+
+
+// display movie detail
+async function displayPreview(imdbId) {
+  const container = document.getElementById("vid");
+
+  const video = await fetchMoviePreview(imdbId);
+
+  if(Object.keys(video).length === 0 && video.constructor === Object) {
+    container.innerHTML = "Video Preview Not Available";
+  } else {
+    container.innerHTML = `
+    <iframe 
+      width="640" 
+      height="360" 
+      src="https://www.imdb.com/video/imdb/${video.videos[0].id}/imdb/embed"
+      frameborder="0" 
+      allowfullscreen>
+    </iframe>
+  `;
   }
 }
