@@ -63,9 +63,9 @@ async function displayMovie(containerId) {
         movieOverlay.innerHTML = `
         <div style="height: 410px">
           <h3>${movie.primaryTitle}</h3>
-          <h5><i class="fa-solid fa-tag" style="color: #A76BCE;"></i> ${movie.genres?.slice(0,3).join(', ') || 'N/A'}</h5>
-          <h5><i class="fa-solid fa-clock" style="color: #A76BCE;"></i> ${movie.runtimeSeconds ? movie.runtimeSeconds / 60 : 'N/A'} mins</h5>
-          <h5><i class="fa-solid fa-language" style="color: #A76BCE;"></i> ${movie.spokenLanguages && movie.spokenLanguages.length > 0 ? movie.spokenLanguages[0].name : 'N/A'}</h5>
+          <h5><i class="fa-solid fa-tag" style="color: #A76BCE; padding-right: 1%"></i> ${movie.genres?.slice(0,3).join(', ') || 'N/A'}</h5>
+          <h5><i class="fa-solid fa-clock" style="color: #A76BCE; padding-right: 1%"></i> ${movie.runtimeSeconds ? movie.runtimeSeconds / 60 : 'N/A'} mins</h5>
+          <h5><i class="fa-solid fa-language" style="color: #A76BCE; padding-right: 1%"></i> ${movie.spokenLanguages && movie.spokenLanguages.length > 0 ? movie.spokenLanguages[0].name : 'N/A'}</h5>
         </div>
         <div style="display: flex; justify-content: center;">
           <button><a href="movie-detail.php?id=${movie.id}">BUY TICKET<a></button>
@@ -110,4 +110,35 @@ async function displayPreview(imdbId) {
     </iframe>
   `;
   }
+}
+
+async function displayDetails(imdbId) {
+  const containerLeft = document.getElementById("movieInfo")
+  const containerRight = document.getElementById("moviePlot")
+  const containerTitle = document.getElementById("title")
+
+  const movie = await fetchMovieDetail(imdbId); 
+
+  containerTitle.innerHTML = `
+    <h2>${movie.primaryTitle}</h2>
+  `;
+
+  containerLeft.innerHTML = `
+    <img src="${movie.primaryImage.url}" alt="${movie.originalTitle}">
+    <h5><i class="fa-solid fa-tag" style="padding-right: 1%"></i> ${movie.genres?.slice().join(', ') || 'N/A'}</h5>
+    <h5><i class="fa-solid fa-clock" style="padding-right: 1%"></i> ${movie.runtimeSeconds ? movie.runtimeSeconds / 60 : 'N/A'} mins</h5>
+    <h5><i class="fa-solid fa-language" style="padding-right: 1%"></i> ${movie.spokenLanguages && movie.spokenLanguages.length > 0 ? movie.spokenLanguages[0].name : 'N/A'}</h5>
+  `;
+
+  const synopsis = document.getElementById("syn");
+  synopsis.textContent = movie.plot || "No synopsis available.";
+
+  const cast = document.getElementById("cas");
+  cast.textContent = movie.stars?.map(s => s.displayName).join(", ") || "N/A";
+
+  const directors = document.getElementById("dir");
+  directors.textContent = movie.directors?.map(d => d.displayName).join(", ") || "N/A";
+
+  const writers = document.getElementById("wri");
+  writers.textContent = movie.writers?.map(w => w.displayName).join(", ") || "N/A";
 }
