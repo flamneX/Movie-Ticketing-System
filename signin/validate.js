@@ -4,6 +4,9 @@ document.getElementById('signinForm').addEventListener('submit', async function(
     const form = event.target;
     const formData = new FormData(form);
 
+    const params = new URLSearchParams(window.location.search);
+    const movieId = params.get('id');
+
     // Action 1: Send data via AJAX
     fetch('userValidation.php', {
         'method': 'POST',
@@ -13,7 +16,12 @@ document.getElementById('signinForm').addEventListener('submit', async function(
     .then(data => {
         if (data !== null) {
             localStorage.setItem('loggedUserID', data);
-            window.location.href = '../';
+
+            if(movieId) {
+                window.location.href = `/movie-ticketing-system/purchase/?id=${encodeURIComponent(movieId)}`;
+            } else {
+                window.location.href = '../';
+            }
         }
         else {
             document.getElementById("userNameError").textContent = "INVALID USER NAME";

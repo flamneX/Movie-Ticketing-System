@@ -25,8 +25,8 @@ CREATE TABLE IF NOT EXISTS wishlist (
 );
 
 -- Creating the Transaction Table
-DROP TABLE IF EXISTS transaction;
-CREATE TABLE IF NOT EXISTS transaction (
+DROP TABLE IF EXISTS transactions;
+CREATE TABLE IF NOT EXISTS transactions (
     transactionID INT AUTO_INCREMENT NOT NULL,
     userID INT NOT NULL,
     totalPrice FLOAT(10) NOT NULL,
