@@ -8,11 +8,14 @@
     </ul>
     <script>
         if (localStorage.getItem("loggedUserID") !== null) {
-            const profileButton = document.getElementById("profile");
+            let profileButton = document.getElementById("profile");
 
             profileButton.lastElementChild.textContent = "PROFILE";
             profileButton.href = "/Movie-Ticketing-System/profile/";
-            console.log(localStorage.getItem("loggedUserID"));
+        }
+        else {
+            let wishlistButton = document.getElementById("wishlist").parentNode;
+            wishlistButton.parentNode.removeChild(wishlistButton);
         }
     </script>
 </nav>

@@ -78,9 +78,9 @@
             <h2>Follow Us</h2>
             <p>Stay connected with us through our social media:</p>
             <div class="social-icons">
-              <a href="https://facebook.com" target="_blank"><img src="../Circle-Facebook-Logo-Download-PNG-Image.png" alt="Facebook"></a>
-              <a href="https://twitter.com" target="_blank"><img src="../X-Logo.png" alt="Twitter"></a>
-              <a href="https://instagram.com" target="_blank"><img src="../Instagram-Emblem.png" alt="Instagram"></a>
+              <a href="https://facebook.com" target="_blank"><img src="../images/Circle-Facebook-Logo-Download-PNG-Image.png" alt="Facebook"></a>
+              <a href="https://twitter.com" target="_blank"><img src="../images/X-Logo.png" alt="Twitter"></a>
+              <a href="https://instagram.com" target="_blank"><img src="../images/Instagram-Emblem.png" alt="Instagram"></a>
             </div>
           </section>
         </div>
