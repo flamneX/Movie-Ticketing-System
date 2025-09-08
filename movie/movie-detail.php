@@ -21,7 +21,7 @@
         <?php
             include("../include/footer.php");
         ?>
-        <script src="script.js"></script>
+        <script src="../movie/script.js"></script>
         <script>
             window.onload = () => {
                 const params = new URLSearchParams(window.location.search);
