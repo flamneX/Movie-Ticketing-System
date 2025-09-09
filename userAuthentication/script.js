@@ -2,6 +2,7 @@ const container = document.getElementById('loginContainer');
 const registerBtn = document.getElementById('register');
 const loginBtn = document.getElementById('login');
 
+// Switch Toggle Panel
 registerBtn.addEventListener('click', () => {
     container.classList.add("active");
 });
@@ -10,6 +11,7 @@ loginBtn.addEventListener('click', () => {
     container.classList.remove("active");
 });
 
+// Fetch Sign in
 document.getElementById('signinForm').addEventListener('submit', async function(event) {
     event.preventDefault(); // Prevent default form submission
 
@@ -27,7 +29,7 @@ document.getElementById('signinForm').addEventListener('submit', async function(
             window.location.href = '../';
         }
         else {
-            document.getElementById("signinErrorText").textContent = "INVALID USER NAME/PASSWORD";
+            document.getElementById("signinErrorText").textContent = "INVALID USERNAME/PASSWORD!";
         }
     })
     .catch(error => {
@@ -35,6 +37,7 @@ document.getElementById('signinForm').addEventListener('submit', async function(
     });
 });
 
+// Fetch Sign up
 document.getElementById('signupForm').addEventListener('submit', async function(event) {
     event.preventDefault(); // Prevent default form submission
 
@@ -49,9 +52,9 @@ document.getElementById('signupForm').addEventListener('submit', async function(
     .then(data => {
         localStorage.setItem('loggedUserID', data);
         window.location.href = '../';
-        window.alert("Account Registered Succeddfully");
+        window.alert("Account Registered Successfully");
     })
     .catch(error => {
-        document.getElementById("signupErrorText").textContent = "USER NAME ALREADY EXISTS";
+        document.getElementById("signupErrorText").textContent = "USERNAME ALREADY EXISTS!";
     });
 });

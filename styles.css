@@ -89,7 +89,8 @@ main {
 }
 
 .container {
-    justify-items: center;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
@@ -450,39 +451,40 @@ button:hover {
 
 /* Styling for Login Form*/
 .loginContainer {
-    background-color: #ffff;
+    background-color: #222222;
     border-radius: 30px;
-    box-shadow: 0 5px 15px rgba(60, 48, 48, 0.35);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.35);
     position: relative;
     overflow: hidden;
-    width: 768px;
+    min-width: 800px;
     max-width: 100%;
-    min-height: 480px;
+    min-height: 500px;
     margin-top: 5%;
 }
 
 .loginContainer p {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 20px;
     letter-spacing: 0.3px;
-    margin: 20px 0;
+    margin: 5% 0 5% 0;
 }
 
-.loginContainer error {
+.loginContainer errorText {
     color: #ff0000;
-    font-style: oblique;
+    font-weight: 1000;
+    font-size: 19px;
 }
 
 .loginContainer span {
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .loginContainer button {
     background-color: #7F00FF;
     color: #ffffff;
     font-size: smaller;
-    border: 1px solid transparent;
-    border-radius: 0px;
+    border-style: none;
+    border-radius: 0;
     font-weight: 600;
     letter-spacing: 0.5px;
     text-transform: uppercase;
@@ -492,11 +494,12 @@ button:hover {
 
 .loginContainer button.hidden {
     background-color: transparent;
-    border-color: #ffffff;
+    border-color: #222222;
 }
 
 .loginContainer form {
-    background-color: #ffffff;
+    background-color: #222222;
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -506,14 +509,13 @@ button:hover {
 }
 
 .loginContainer input {
-    background-color: #cccccc;
-    border-width: 0;
-    border-left: 5px solid black;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+    background-color: #dddddd;
+    border-style: none;
+    border-left: 5px solid #a719ff;
+    border-radius: 4px 0 0 4px;
     margin: 10px;
     padding: 15px 20px;
-    font-size: 14px;
+    font-size: 16px;
     width: 100%;
     outline: none;
 }
@@ -576,13 +578,12 @@ button:hover {
 
 .loginContainer.active .toggle-loginContainer {
     transform: translateX(-100%);
-    border-radius: 0 50px 5% 0;
+    border-radius: 0 50px 50px 0;
 }
 
 .toggle {
-    background-color: #A76BCE;
+    background-color: #752fbb;
     height: 100%;
-    background: linear-gradient(to right, #A76BCE, #A76BCE);
     color: #ffffff;
     position: relative;
     left: -100%;
@@ -595,6 +596,7 @@ button:hover {
 .loginContainer.active .toggle {
     transform: translateX(50%);
 }
+
 .toggle-panel {
     position: absolute;
     width: 50%;
@@ -608,6 +610,11 @@ button:hover {
     transform: translateX(0);
     transition: all 0.6s ease-in-out;
 }
+
+.toggle-loginContainer button {
+    background-color: #222222;
+}
+
 .toggle-left {
   transform: translateX(-200%);
 }
@@ -629,37 +636,97 @@ button:hover {
 .profileContainer {
     display: flex;
     flex-direction: column;
-    height: 45vh;
-    background-color: #A76BCE;
-    border-radius: 30px;
-    box-shadow: 0 5px 15px rgba(60, 48, 48, 0.35);
+    align-items: center;
+    min-width: 800px;
+    max-width: 100%;
+    min-height: 400px;
+    background-color: #222222;
+    color: #ffffff;
+    border-radius: 50px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.35);
     position: relative;
     overflow: hidden;
-    margin-top: 5%;
+    margin: 5% 0 3% 0;
     padding: 1% 10%;
 }
 
-.profileContainer input:disabled {
-    opacity: 1;
-    background-color: #ffffff;
-    border-width: 0;
-    border-left: 5px solid black;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+.profileContainer h1 {
+    color: #9d00ff;
+}
+.profileContainer label {
+    font-size: 20px;
+    font-weight: 1000;
+}
+
+.profileContainer .inputField {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    box-sizing: border-box;
+    width: 800px;
+    padding: 0 100px;
+}
+
+.profileContainer .errorField {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 800px;
+    padding: 0 100px;
+}
+
+.inputField input {
+    background-color: #dddddd;
+    border-style: none;
+    border-left: 5px solid #a719ff;
+    border-radius: 4px 0 0 4px;
     margin: 10px;
     padding: 15px 20px;
-    font-size: 14px;
-    width: 100%;
+    font-size: 18px;
+    width: 70%;
     outline: none;
+}
+
+.errorField errorText {
+    color: #ff0000;
+    font-weight: 1000;
+    font-size: 24px;
 }
 
 #buttonRow {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 #buttonRow a {
-    margin: 2%;
     margin-top: 5%;
+}
+
+#buttonRow button {
+    box-sizing: border-box;
+    border: 0.15em solid #A76BCE;
+    font-size: larger;
+    width: 500px;
+    height: 3em;
+    background-color: #222222;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#buttonRow button:hover {
+    background-color: #a76bce;
+}
+
+#buttonRow #logout {
+    color: #ad1919;
+}
+
+#buttonRow #logout:hover {
+    background-color: #ad1919;
+    color: #ffffff;
 }

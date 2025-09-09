@@ -2,7 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="../styles.css"/>
-        <title>Login Form</title>
+        <title>Login</title>
     </head>
 
     <body>
@@ -20,22 +20,22 @@
                             <h1>Register</h1>
                             <span>Fill Out The Following Info For Registeration</span>
                             <input name="operationType" value="signup" hidden>
-                            <input name="userName" type="text" placeholder="User Name" required>
-                            <input name="userPassword" type="password" placeholder="Password" required>
-                            <input name="userEmail" type="email" placeholder="E-mail" required>
-                            <input name="userPhoneNo" type="text" placeholder="Phone No." required>
-                            <error id="signupErrorText"></error>
+                            <input name="userName" type="text" placeholder="UserName" maxlength="50" required>
+                            <input name="userPassword" type="password" placeholder="Password" maxlength="50" required>
+                            <input name="userEmail" type="email" placeholder="E-mail" maxlength="50" required>
+                            <input name="userPhoneNo" type="text" placeholder="Phone No. (e.g. 012-3456789)" maxlength="50" pattern="01[0-9]{1}-[0-9]{7,8}" required>
+                            <errorText id="signupErrorText"></errorText>
                             <button>SIGN UP</button>
                         </form>
                     </div>
                     <div class="form-loginContainer sign-in">
                         <form id="signinForm">
                             <h1>Login</h1>
-                            <span>Login With Your User Name & Password</span>
+                            <span>Login With Your UserName & Password</span>
                             <input name="operationType" value="signin" hidden>
-                            <input name="userName" type="text" placeholder="User Name" required>
-                            <input name="userPassword" type="password" placeholder="Password" required>
-                            <error id="signinErrorText"></error>
+                            <input name="userName" type="text" placeholder="UserName" maxlength="50" required>
+                            <input name="userPassword" type="password" placeholder="Password" maxlength="50" required>
+                            <errorText id="signinErrorText"></errorText>
                             <button>SIGN IN</button>
                         </form>
                     </div>
@@ -44,12 +44,12 @@
                             <div class="toggle-panel toggle-left">
                                 <h1>Welcome Back!</h1>
                                 <p>Log in to use all features</p>
-                                <button class="hidden" id="login">Sign In</button>
+                                <button id="login">Sign In</button>
                             </div>
                             <div class="toggle-panel toggle-right">
                                 <h1>Hello!</h1>
                                 <p>New User? <br> Register to use all features</p>
-                                <button class="hidden" id="register">Sign Up</button>
+                                <button id="register">Sign Up</button>
                             </div>
                         </div>
                     </div>

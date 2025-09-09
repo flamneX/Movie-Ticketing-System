@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Update Password</title>
+        <link rel="stylesheet" href="../styles.css"/>
+    </head>
+    <body onload="setPasswordForm()">
+        <div class="headContainer">
+            <?php
+                include("../include/header.php");
+                include("../include/navigation.php");
+            ?>
+        </div>
+        <main>
+            <div class="container">
+                <div class="profileContainer">
+                    <h1> Update Password</h1>
+                    <form id="passwordForm">
+                        <input name="operationType" value="updatePassword" hidden>
+                        <input id="userID" name="userID" hidden>
+                        <div class="inputField">
+                            <input id="userPassword1" name="userPassword1" type="password" placeholder="New Password" maxlength="50" required>
+                            <label for="userPassword1">New<br>Password : </label>
+                        </div>
+                        <div class="inputField">
+                            <input id="userPassword2" name="userPassword2" type="password" placeholder="Re-enter Password" maxlength="50" required>
+                            <label for="userPassword2">Re-enter<br>Password :</label>
+                        </div>
+                        <div class="errorField">
+                            <errorText id="errorText"></errorText>
+                        </div>
+                        <div id="buttonRow">
+                            <a><button>Confirm</button></a>
+                            <a><button type="button" id="logout" onclick="back()">CANCEL</button></a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <?php
+            include("../include/footer.php");
+        ?>
+        <script src="script.js"></script>
+    </body>
+</html>
