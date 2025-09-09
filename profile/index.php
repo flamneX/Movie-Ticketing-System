@@ -13,13 +13,21 @@
         </div>
 
         <main>
-            <img id="userImage" src="">
-            <p id="userName">a</p>
-            <p id="userEmail">a</p>
-            <p id="userPhoneNo">a</p>
-            <div style="flex-direction: row; justify-content: center;">
-                <a style="margin:0"href="updateAccount.php"><button> UPDATE ACCOUNT</button></a>
-                <button onclick="logout()"> LOG OUT</button>
+            <div class="container">
+                <div class="profileContainer">
+                    <h1>User Profile</h1>
+                    <label for="userName">User Name: </label>
+                    <input id="userName" disabled><br>
+                    <label for="userEmail">E-mail   : </label>
+                    <input id="userEmail" disabled><br>
+                    <label for="userPhoneNo">Phone No.: </label>
+                    <input id="userPhoneNo" disabled>   
+                </div>
+                <div id="buttonRow">
+                    <a href="updateAccount.php"><button>UPDATE INFO</button></a>
+                    <a href="updateAccount.php"><button>UPDATE PASSWORD</button></a>
+                    <a onclick="logout()"><button>LOG OUT</button></a>
+                </div>
             </div>
         </main>
 
@@ -39,9 +47,9 @@
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById('userName').textContent = data.userName ?? "undefined";
-                document.getElementById("userEmail").textContent = data.userEmail ?? "undefined";
-                document.getElementById("userPhoneNo").textContent = data.userPhoneNo ?? "undefined";
+                document.getElementById('userName').value = data.userName ?? "undefined";
+                document.getElementById("userEmail").value = data.userEmail ?? "undefined";
+                document.getElementById("userPhoneNo").value = data.userPhoneNo ?? "undefined";
             })
             .catch(error => {
                 console.error('Error during action 1:', error);

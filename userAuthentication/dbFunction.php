@@ -42,7 +42,6 @@
             }
         } 
         echo json_encode(null);
-        return;
     }
 
     function registerUser($conn, $userName , $userPassword, $userEmail, $userPhoneNo) {

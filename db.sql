@@ -25,10 +25,11 @@ CREATE TABLE IF NOT EXISTS wishlist (
 );
 
 -- Creating the Transaction Table
-DROP TABLE IF EXISTS transaction;
-CREATE TABLE IF NOT EXISTS transaction (
+DROP TABLE IF EXISTS transactions;
+CREATE TABLE IF NOT EXISTS transactions (
     transactionID INT AUTO_INCREMENT NOT NULL,
     userID INT NOT NULL,
+    movieID VARCHAR(50) NOT NULL,
     totalPrice FLOAT(10) NOT NULL,
     PRIMARY KEY (transactionID),
     FOREIGN KEY (userID) REFERENCES user(userID)
@@ -39,7 +40,6 @@ DROP TABLE IF EXISTS ticket;
 CREATE TABLE IF NOT EXISTS ticket (
     ticketID INT AUTO_INCREMENT NOT NULL,
     userID INT NOT NULL,
-    movieID VARCHAR(50) NOT NULL,
     transactionID INT NOT NULL,
     PRIMARY KEY (ticketID),
     FOREIGN KEY (userID) REFERENCES user(userID),
