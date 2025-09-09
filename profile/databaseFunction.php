@@ -15,11 +15,17 @@
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $data = json_decode(file_get_contents('php://input'), true);
 
-        $userID = $data["userID"] ?? 0;
-        getUser($conn, $userID);
+        switch ($data['type']) {
+            case 'fetchByID':
+                $userID = $data["userID"] ?? 0;
+                getUserByID($conn, $userID);
+                break;
+            case 'addUser':
+                break;
+        }
     }
 
-    function getUser($conn, $userID) {
+    function getUserByID($conn, $userID) {
         $sql = "SELECT * FROM user WHERE userID = '". $userID ."'";
         $result = mysqli_query($conn, $sql);
         
@@ -29,5 +35,8 @@
         else {
             echo json_encode("YES");
         }
+    }
+
+    function updateUser($conn, $userID, $data) {
     }
 ?>

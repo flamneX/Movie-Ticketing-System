@@ -17,12 +17,40 @@
             <p id="userName">a</p>
             <p id="userEmail">a</p>
             <p id="userPhoneNo">a</p>
-            <button onclick="logout()"> LOG OUT</button>
+            <div style="flex-direction: row; justify-content: center;">
+                <a style="margin:0"href="updateAccount.php"><button> UPDATE ACCOUNT</button></a>
+                <button onclick="logout()"> LOG OUT</button>
+            </div>
         </main>
 
         <?php
             include("../include/footer.php");
         ?>
-        <script src="script.js"></script>
+        <script>
+            fetch('databaseFunction.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    type: "fetchByID",
+                    userID: localStorage.getItem("loggedUserID"),
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('userName').textContent = data.userName ?? "undefined";
+                document.getElementById("userEmail").textContent = data.userEmail ?? "undefined";
+                document.getElementById("userPhoneNo").textContent = data.userPhoneNo ?? "undefined";
+            })
+            .catch(error => {
+                console.error('Error during action 1:', error);
+            });
+
+            function logout() {
+                localStorage.removeItem("loggedUserID");
+                window.location.href = "../";
+            }
+        </script>
     </body>
 </html>

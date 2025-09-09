@@ -8,9 +8,8 @@ USE movie_ticketing;
 DROP TABLE IF EXISTS user;
 CREATE TABLE IF NOT EXISTS user (
   userID INT AUTO_INCREMENT NOT NULL,
-  userImage MEDIUMBLOB,
-  userName VARCHAR(50) NOT NULL,
-  password VARCHAR(50) NOT NULL,
+  userName VARCHAR(50) NOT NULL UNIQUE,
+  userPassword VARCHAR(50) NOT NULL,
   userEmail VARCHAR(50) NOT NULL,
   userPhoneNo VARCHAR(50) NOT NULL,
   PRIMARY KEY (userID)
