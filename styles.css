@@ -172,70 +172,78 @@ main {
 .footerContainer div {
     flex: 1;
 }
-/*Styling for banner*/
-.banner-container{
-    position: relative;
-    width: 100%;
-    height: 500px;
+
+/*Styling for movie Showtimes in HomePage*/
+.Mmovie-Rrow {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;        /* enable horizontal scrolling */
+    scroll-snap-type: x mandatory;  /* smooth snap effect */
+    padding: 20px 0;
+    scrollbar-width: none;   /* Firefox */
+    scrollbar-color: #888 #111;
+}
+/* Webkit scrollbar (Chrome, Edge, Safari) */
+.Mmovie-Rrow::-webkit-scrollbar {
+    height: 8px;
+}
+.Mmovie-Rrow::-webkit-scrollbar-track {
+    background: #111;
+}
+.Mmovie-Rrow::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}/* Movie Card */
+.Mmovie-card {
+    flex: 0 0 auto;          /* prevent shrinking */
+    width: 200px;            /* card width */
+    scroll-snap-align: start;
+    background: #222;
+    border-radius: 10px;
     overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
 }
-.banner-slide {
-    position: absolute;
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+/* Movie Poster */
+.Mmovie-card img {
     width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    background-size: cover;
-    background-position: center;
+    height: 300px;
+    object-fit: cover;
 }
-.banner-slide.active {
-    opacity: 1;
-}
-
-.banner-controls {
+.Mmovie-Rrow-wrapper {
+    position: relative;
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 30px;
+    align-items: center;
 }
-
-.banner-controls button {
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
+/* Arrows under HomePage movie showtime*/
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
     color: white;
-    padding: 12px 20px;
-    border-radius: 50px;
+    border: none;
+    padding: 10px;
     cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.banner-controls button:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
-}
-
-/* Indicator dots */
-.banner-indicators {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.banner-indicators .dot {
-    width: 12px;
-    height: 12px;
+    font-size: 24px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    cursor: pointer;
+    z-index: 2;
     transition: background 0.3s ease;
 }
 
-.banner-indicators .dot.active {
-    background: white;
-    transform: scale(1.2);
+.arrow:hover {
+    background: rgba(0,0,0,0.9);
+}
+
+.arrow.left {
+    left: 10px;
+}
+
+.arrow.right {
+    right: 10px;
 }
