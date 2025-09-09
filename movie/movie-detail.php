@@ -46,7 +46,7 @@
         <script>
             window.onload = () => {
                 const params = new URLSearchParams(window.location.search);
-                const imdbId = params.get("id");
+                const imdbId = params.get("movieID");
                 displayPreview(imdbId);
                 displayDetails(imdbId);
 
@@ -54,11 +54,11 @@
 
                 if (loggedUser == null) {
                     buyButton.innerHTML =  `
-                        <a href="/Movie-Ticketing-System/signin/index.php?id=${imdbId}" style="color: white; text-decoration: none;">LOG IN TO BUY</a>
+                        <a href="/Movie-Ticketing-System/signin/index.php?movieID=${imdbId}" style="color: white; text-decoration: none;">LOG IN TO BUY</a>
                     `;
                 } else {
                     buyButton.innerHTML =  `
-                        <a href="/Movie-Ticketing-System/purchase/?id=${imdbId}" style="color: white; text-decoration: none;">BUY TICKET</a>
+                        <a href="/Movie-Ticketing-System/purchase/?movieID=${imdbId}" style="color: white; text-decoration: none;">BUY TICKET</a>
                     `;
                 }
             }

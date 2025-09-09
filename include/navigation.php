@@ -6,7 +6,7 @@
             <a id="wishlist" href="/Movie-Ticketing-System/myWishlist/"><button>My Wishlist</button></a>
         </li>
         <li id="ticketsItem" style="visibility: hidden;">
-            <a id="contact" href="/Movie-Ticketing-System/myTicket/"><button>My Tickets</button></a>
+            <a id="ticket" href="/Movie-Ticketing-System/myTicket/"><button>My Tickets</button></a>
         </li>
         <li><a id="profile" href="/Movie-Ticketing-System/signin/">
             <button style="background-image:linear-gradient(to bottom right, #A76BCE, #7F00FF);">SIGN IN</button>

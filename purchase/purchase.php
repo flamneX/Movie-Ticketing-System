@@ -21,17 +21,17 @@
     }
 
     function makeTransaction($conn, $userID , $totalPrice, $movieID) {
-        $stmt = mysqli_prepare($conn, 'INSERT INTO transactions (userID, totalPrice) VALUES (?, ?)');
-        mysqli_stmt_bind_param($stmt, 'id', $userID, $totalPrice);
+        $stmt = mysqli_prepare($conn, 'INSERT INTO transactions (userID, movieID, totalPrice) VALUES (?, ?, ?)');
+        mysqli_stmt_bind_param($stmt, 'isd', $userID, $movieID, $totalPrice);
         
         if (mysqli_stmt_execute($stmt)) {
             $transactionID = mysqli_insert_id($conn);
 
             $ticketAmount = $_POST["ticketAmount"];
 
-            $ticketStmt = mysqli_prepare($conn, 'INSERT INTO ticket (userID, movieID, transactionID) VALUES (?, ?, ?)');
+            $ticketStmt = mysqli_prepare($conn, 'INSERT INTO ticket (userID, transactionID) VALUES (?, ?)');
             for ($i = 0; $i < $ticketAmount; $i++) {
-                mysqli_stmt_bind_param($ticketStmt, 'isi', $userID, $movieID, $transactionID);
+                mysqli_stmt_bind_param($ticketStmt, 'ii', $userID, $transactionID);
                 mysqli_stmt_execute($ticketStmt);
             }
             mysqli_stmt_close($ticketStmt);

@@ -5,7 +5,7 @@ document.getElementById('signinForm').addEventListener('submit', async function(
     const formData = new FormData(form);
 
     const params = new URLSearchParams(window.location.search);
-    const movieId = params.get('id');
+    const movieId = params.get('movieID');
 
     // Action 1: Send data via AJAX
     fetch('userValidation.php', {
@@ -18,7 +18,7 @@ document.getElementById('signinForm').addEventListener('submit', async function(
             localStorage.setItem('loggedUserID', data);
 
             if(movieId) {
-                window.location.href = `/movie-ticketing-system/purchase/?id=${encodeURIComponent(movieId)}`;
+                window.location.href = `/movie-ticketing-system/purchase/?movieID=${encodeURIComponent(movieId)}`;
             } else {
                 window.location.href = '../';
             }

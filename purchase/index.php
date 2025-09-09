@@ -76,7 +76,7 @@
 
             window.onload = () => {
                 const params = new URLSearchParams(window.location.search);
-                const imdbId = params.get("id");
+                const imdbId = params.get("movieID");
 
                 displayInfo(imdbId);
                 document.getElementById("movieID").value = imdbId;

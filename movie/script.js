@@ -69,7 +69,7 @@ async function displayCurrentMovie(containerId) {
           <h5><i class="fa-solid fa-language" style="color: #A76BCE; padding-right: 1%"></i> ${movie.spokenLanguages && movie.spokenLanguages.length > 0 ? movie.spokenLanguages[0].name : 'N/A'}</h5>
         </div>
         <div style="display: flex; justify-content: center;">
-          <a href="movie-detail.php?id=${movie.id}"><button>BUY TICKET</button><a>
+          <a href="movie-detail.php?movieID=${movie.id}"><button>BUY TICKET</button><a>
         </div>
         `;
         movieDiv.appendChild(movieOverlay);

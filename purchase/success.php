@@ -14,6 +14,7 @@
 
         <main>
             <h1>Success</h1>
+            <h4>Your Ticket Purchase Was Successful!!! See You At Absolute Cinema!!!</h4>
         </main>
         <?php
             include("../include/footer.php");

@@ -14,7 +14,15 @@
 
           <main>
             <h1>My Tickets</h1>
+            <div id="myTickets">
+            </div>
           </main>
+          <script src="script.js"></script>
+          <script>
+            window.onload = () => {
+                displayTransactions();
+            }
+        </script>
         <?php
             include("../include/footer.php");
         ?>

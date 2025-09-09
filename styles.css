@@ -13,6 +13,7 @@ html {
     background-image: linear-gradient(to bottom right, #A76BCE, #9b53e3);
     color: black;
     font-weight: 500;
+    display: flex;
 }
 
 /*Styling for document body*/
@@ -251,7 +252,7 @@ main {
     height: auto;
     border: 3px solid transparent;
     border-radius: 8px;
-    transition: box-shadow 0.2s ease-in;
+    transition: box-shadow 0.2s ease;
 }
 
 .payment-option input[type="radio"]:checked + img {
@@ -287,6 +288,19 @@ main {
 
 .makePayment:hover {
     box-shadow: 1em 0 2em #a719ff, -1em 0 2em #4d0a8f;
+}
+
+/*Styling for my ticket page*/
+.foreground img {
+    width: 200px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.2s ease-in;
+}
+
+.foreground img:hover {
+    transform: scale(1.05);
 }
 
 /*Styling for page footer*/
