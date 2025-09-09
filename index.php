@@ -13,7 +13,10 @@
         </div>
 
         <main>
-            This is the Home Page
+            <div class="banner-container" id="banner"></div>
+            <div class="banner-indicators" id="indicators"></div>
+            <script src="index.js"></script>
+             <h1>Movie Showtimes</h1>
         </main>
 
         <?php
