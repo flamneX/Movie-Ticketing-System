@@ -381,81 +381,81 @@ button:hover {
 }
 
 .form-loginContainer {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  transition: all 0.6s ease-in-out;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
 }
 
 .sign-in {
-  left: 0;
-  width: 50%;
-  z-index: 2;
+    left: 0;
+    width: 50%;
+    z-index: 2;
 }
 
 .loginContainer.active .sign-in {
-  transform: translateX(100%);
+    transform: translateX(100%);
 }
 
 .sign-up {
-  left: 0;
-  width: 50%;
-  opacity: 0;
-  z-index: 1;
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
 }
 
 .loginContainer.active .sign-up {
-  transform: translateX(100%);
-  opacity: 1;
-  z-index: 5;
-  animation: move 0.6s;
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: move 0.6s;
 }
 
 @keyframes move {
-  0%,
-  49.99% {
-    opacity: 0;
-    z-index: 1;
-  }
-  50%,
-  100% {
-    opacity: 1;
-    z-index: 5;
-  }
+    0%,
+    49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+    50%,
+    100% {
+        opacity: 1;
+        z-index: 5;
+    }
 }
 
 .toggle-loginContainer {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 50%;
-  height: 100%;
-  overflow: hidden;
-  transition: all 0.6s ease-in-out;
-  border-radius: 50px 0 0 50px;
-  z-index: 1000;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.6s ease-in-out;
+    border-radius: 50px 0 0 50px;
+    z-index: 1000;
 }
 
 .loginContainer.active .toggle-loginContainer {
-  transform: translateX(-100%);
-  border-radius: 0 50px 5% 0;
+    transform: translateX(-100%);
+    border-radius: 0 50px 5% 0;
 }
 
 .toggle {
-  background-color: #A76BCE;
-  height: 100%;
-  background: linear-gradient(to right, #A76BCE, #A76BCE);
-  color: #ffffff;
-  position: relative;
-  left: -100%;
-  height: 100%;
-  width: 200%;
-  transform: translateX(0);
-  transition: all 0.6s ease-in-out;
+    background-color: #A76BCE;
+    height: 100%;
+    background: linear-gradient(to right, #A76BCE, #A76BCE);
+    color: #ffffff;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: all 0.6s ease-in-out;
 }
 
 .loginContainer.active .toggle {
-  transform: translateX(50%);
+    transform: translateX(50%);
 }
 .toggle-panel {
     position: absolute;
@@ -485,4 +485,43 @@ button:hover {
 
 .loginContainer.active .toggle-right {
   transform: translateX(200%);
+}
+
+/* Styling for User Profile*/
+.profileContainer {
+    display: flex;
+    flex-direction: column;
+    height: 45vh;
+    background-color: #A76BCE;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(60, 48, 48, 0.35);
+    position: relative;
+    overflow: hidden;
+    margin-top: 5%;
+    padding: 1% 10%;
+}
+
+.profileContainer input:disabled {
+    opacity: 1;
+    background-color: #ffffff;
+    border-width: 0;
+    border-left: 5px solid black;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin: 10px;
+    padding: 15px 20px;
+    font-size: 14px;
+    width: 100%;
+    outline: none;
+}
+
+#buttonRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#buttonRow a {
+    margin: 2%;
+    margin-top: 5%;
 }
