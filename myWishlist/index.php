@@ -14,7 +14,14 @@
 
         <main>
             <h1>My Wishlist</h1>
+            <div id="myWishlistContainer"></div>
         </main>
+        <script src="script.js"></script>
+          <script>
+            window.onload = () => {
+                displayWishlist();
+            }
+        </script>
         <?php
             include("../include/footer.php");
         ?>

@@ -35,7 +35,6 @@
             window.onload = () => {
                 const params = new URLSearchParams(window.location.search);
                 const imdbId = params.get("id");
-                displayPreview(imdbId);
             }
         </script>
     </body>

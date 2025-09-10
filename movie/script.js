@@ -1,3 +1,17 @@
+// Button Toggle
+let currentBtn = document.getElementById("currentBtn");
+let upcomingBtn = document.getElementById("upcomingBtn");
+
+currentBtn.addEventListener('click', () => {
+  currentBtn.classList.add("active");
+  upcomingBtn.classList.remove("active");
+});
+
+upcomingBtn.addEventListener('click', () => {
+  upcomingBtn.classList.add("active");
+  currentBtn.classList.remove("active");
+})
+
 // fetch movie detail json using IMDB ID
 async function fetchMovieDetail(imdbId) {
     try {
@@ -28,30 +42,20 @@ async function fetchMoviePreview(imdbId) {
     }
 }
 
-// list of movies to display
-const CURRENT_SERIES = [
-  "tt2457282",
-  "tt30648377",
-  "tt8091892",
-  "tt4054952",
-  "tt1587156",
-  "tt8092118",
-  "tt1909796",
-  "tt12007484",
-  "tt9534948",
-  "tt13997358",
-];
+// fetch Array of Movie json from IMDB ID
+async function fetchMovieArray(url) {
+  try {
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
+        return data.titles;
 
-const UPCOMING_SERIES = [
-  "tt0245429",
-  "tt0347149",
-  "tt0119698",
-  "tt6587046",
-  "tt0097814",
-  "tt0876563",
-  "tt2013293",
-  "tt0087544",
-];
+    } 
+    catch (error) {
+        console.error("Error fetching movie:", error);
+        return null;
+    }
+}
 
 // display the movies selection
 async function displayCurrentMovie() {
@@ -63,15 +67,23 @@ async function displayCurrentMovie() {
     rowDiv.className = "movie-row";
     rowDiv.classList.add("hidden");
 
-    for (const id of CURRENT_SERIES) {
-        const movie = await fetchMovieDetail(id);
-        if(!movie) continue;
+    let url = `https://api.imdbapi.dev/titles?types=MOVIE&genres=Animation&languageCodes=ja&endYear=`
+      + (new Date().getFullYear() - 3) + `&sortBy=SORT_BY_RELEASE_DATE&sortOrder=DESC`;
+    const NEWEST_SHOWS = await fetchMovieArray(url);
+
+    for (const movieData of NEWEST_SHOWS) {
+        if (movieData.primaryImage === undefined || !movieData) {
+          continue;
+        }
+        const movie = await fetchMovieDetail(movieData.id);
 
         const movieDiv = document.createElement("div");
         movieDiv.className = "movie-card";
         movieDiv.innerHTML = `<img src="${movie.primaryImage.url}" alt="${movie.originalTitle}">`;
         const movieOverlay = document.createElement("div");
         movieOverlay.className = "movie-overlay";
+
+        console.log(document.getElementById("movieContainer"));
 
         movieOverlay.innerHTML = `
         <div style="height: 365px">
@@ -87,6 +99,7 @@ async function displayCurrentMovie() {
         movieDiv.appendChild(movieOverlay);
 
         rowDiv.appendChild(movieDiv);
+        
         counter++;
 
         if (counter === 4) {
@@ -104,7 +117,6 @@ async function displayCurrentMovie() {
 
     // Append any remaining movies in the last row
     if (counter > 0) {
-        container.appendChild(rowDiv);
 
         void rowDiv.offsetWidth;
         rowDiv.classList.remove("hidden");
@@ -122,9 +134,15 @@ async function displayUpcomingMovie() {
     rowDiv.className = "movie-row";
     rowDiv.classList.add("hidden");
 
-    for (const id of UPCOMING_SERIES) {
-        const movie = await fetchMovieDetail(id);
-        if(!movie) continue;
+    // Fetch Series
+    const url = `https://api.imdbapi.dev/titles?types=MOVIE&genres=Animation&languageCodes=ja&endYear=`
+      + new Date().getFullYear() + `&sortBy=SORT_BY_RELEASE_DATE&sortOrder=DESC`;
+    const UPCOMING_SERIES = await fetchMovieArray(url);
+    
+    for (const movie of UPCOMING_SERIES) {
+        if (movie.primaryImage === undefined || !movie) {
+          continue;
+        }
 
         const movieDiv = document.createElement("div");
         movieDiv.className = "movie-card";
@@ -137,7 +155,7 @@ async function displayUpcomingMovie() {
           <h3>${movie.primaryTitle}</h3>
           <h5><i class="fa-solid fa-tag" style="color: #A76BCE; padding-right: 1%"></i> ${movie.genres?.slice(0,3).join(', ') || 'N/A'}</h5>
           <h5><i class="fa-solid fa-clock" style="color: #A76BCE; padding-right: 1%"></i> ${movie.runtimeSeconds ? movie.runtimeSeconds / 60 : 'N/A'} mins</h5>
-          <h5><i class="fa-solid fa-language" style="color: #A76BCE; padding-right: 1%"></i> ${movie.spokenLanguages && movie.spokenLanguages.length > 0 ? movie.spokenLanguages[0].name : 'N/A'}</h5>
+          <h5><i class="fa-solid fa-language" style="color: #A76BCE; padding-right: 1%"></i>${movie.spokenLanguages && movie.spokenLanguages.length > 0 ? movie.spokenLanguages[0].name : 'N/A'}</h5>
         </div>
         <div style="display: flex; justify-content: center;">
           <a href="/Movie-Ticketing-System/myWishlist/wish-detail.php?movieID=${movie.id}"><button>VIEW INFO</button><a>
@@ -163,7 +181,6 @@ async function displayUpcomingMovie() {
 
     // Append any remaining movies in the last row
     if (counter > 0) {
-        container.appendChild(rowDiv);
 
         void rowDiv.offsetWidth;
         rowDiv.classList.remove("hidden");
@@ -206,7 +223,7 @@ async function displayDetails(imdbId) {
   containerLeft.innerHTML = `
     <img src="${movie.primaryImage.url}" alt="${movie.originalTitle}">
     <h5><i class="fa-solid fa-tag" style="padding-right: 1%"></i> ${movie.genres?.join(', ') || 'N/A'}</h5>
-    <h5><i class="fa-solid fa-clock" style="padding-right: 1%"></i> ${movie.runtimeSeconds ? Math.floor(movie.runtimeSeconds / 60) : 'N/A'} mins</h5>
+    <h5><i class="fa-solid fa-clock" style="padding-right: 1%"></i> ${movie.runtimeSeconds ? Math.floor(movie.runtimeSeconds / 60) : '727'} mins</h5>
     <h5><i class="fa-solid fa-language" style="padding-right: 1%"></i> ${movie.spokenLanguages?.[0]?.name || 'N/A'}</h5>
   `;
 

@@ -21,7 +21,7 @@ async function displayTransactions() {
     const data = await response.json();
 
     if (data.length === 0) {
-        tickets.textContent = "No tickets found.";
+        tickets.innerHTML = "<h3>No tickets found.</h3>";
         return;
     }
 
@@ -33,10 +33,10 @@ async function displayTransactions() {
         const movie = movieDetails[i];
         return `
             <div class="foreground" style="margin-bottom:5%; border-radius:20px; border-left-width: 15px; display: flex;">
-                <div style="flex: 1">
+                <div>
                     <img src="${movie.primaryImage.url}" alt="${movie.originalTitle}">
                 </div>
-                <div style="flex: 3.5;">
+                <div class="ticketDetail">
                     <h3>${movie.primaryTitle}</h3>
                     <h4>Transaction ID: ${transaction.transactionID}</h4>
                     <h4>Total Price: RM ${Number(transaction.totalPrice).toFixed(2)}</h4>
