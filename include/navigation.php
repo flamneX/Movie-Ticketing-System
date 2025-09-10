@@ -25,4 +25,5 @@
             ticketBtn.parentElement.removeChild(ticketBtn);
         }
     </script>
+   
 </nav>

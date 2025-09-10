@@ -65,7 +65,7 @@ body {
 }
 
 #topNavigation button {
-    border: 0.15em solid #A76BCE;
+    border: 0.15em solid white;
     font-size: larger;
     width: 8em;
     height: 3em;
@@ -76,7 +76,8 @@ body {
 }
 
 #topNavigation button:hover {
-    box-shadow: 2em 0 4em #A76BCE, -2em 0 4em #7F00FF;
+    box-shadow: 1em 0 2em #A76BCE, -1em 0 2em #7F00FF;    color: #A76BCE;
+    border-color: #A76BCE;
 }
 
 /*Styling for page content*/
@@ -730,4 +731,79 @@ button:hover {
 #buttonRow #logout:hover {
     background-color: #ad1919;
     color: #ffffff;
+}
+
+/*Styling for movie Showtimes in HomePage*/
+.Mmovie-Rrow {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;        /* enable horizontal scrolling */
+    scroll-snap-type: x mandatory;  /* smooth snap effect */
+    padding: 20px 0;
+    scrollbar-width: none;   /* Firefox */
+    scrollbar-color: #888 #111;
+}
+/* Webkit scrollbar (Chrome, Edge, Safari) */
+.Mmovie-Rrow::-webkit-scrollbar {
+    height: 8px;
+}
+.Mmovie-Rrow::-webkit-scrollbar-track {
+    background: #111;
+}
+.Mmovie-Rrow::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}/* Movie Card */
+.Mmovie-card {
+    flex: 0 0 auto;          /* prevent shrinking */
+    width: 200px;            /* card width */
+    scroll-snap-align: start;
+    background: #222;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+    transform: scale(1.05);
+}
+/* Movie Poster */
+.Mmovie-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+.Mmovie-Rrow-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+/* Arrows under HomePage movie showtime*/
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+    z-index: 2;
+    transition: background 0.3s ease;
+}
+
+.arrow:hover {
+    background: rgba(0,0,0,0.9);
+}
+
+.arrow.left {
+    left: 10px;
+}
+
+.arrow.right {
+    right: 10px;
 }
