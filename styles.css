@@ -214,6 +214,21 @@ main {
     box-shadow: 1em 0 2em #a719ff, -1em 0 2em #4d0a8f;
 }
 
+#wishButton {
+    border: 0.15em solid #A76BCE;
+    font-size: larger;
+    width: 10em;
+    height: 3em;
+    background-color: #333333;
+    color: white;
+    border-radius: 10px;
+    transition: box-shadow 0.4s ease;
+}
+
+#wishButton:hover {
+    box-shadow: 1em 0 2em #a719ff, -1em 0 2em #4d0a8f;
+}
+
 /*Styling for purchase page*/
 #ticketAmount {
     width: 7%;
