@@ -11,14 +11,14 @@
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $sql = "SELECT * FROM transactions WHERE userID = $userID ORDER BY transactionID DESC";
+    $sql = "SELECT * FROM wishlist WHERE userID = $userID";
     $result = mysqli_query($conn, $sql);
 
-    $transactions = [];
+    $tickets = [];
     while($row = mysqli_fetch_assoc($result)) {
-        $transactions[] = $row;
+        $tickets[] = $row;
     }
-    echo json_encode($transactions);
+    echo json_encode($tickets);
 
     mysqli_close($conn);
 ?>
