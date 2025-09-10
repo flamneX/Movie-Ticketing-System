@@ -17,7 +17,7 @@ async function displayTransactions() {
     const tickets = document.getElementById("myTickets");
     const userID = localStorage.getItem("loggedUserID");
 
-    const response = await fetch(`getTickets.php?userID=${userID}`);
+    const response = await fetch(`getTransactions.php?userID=${userID}`);
     const data = await response.json();
 
     if (data.length === 0) {
@@ -29,17 +29,43 @@ async function displayTransactions() {
         data.map(ticket => fetchMovieDetail(ticket.movieID))
     );
 
-    tickets.innerHTML = data.map((ticket, i) => {
+    tickets.innerHTML = data.map((transaction, i) => {
         const movie = movieDetails[i];
         return `
-            <div class="foreground" style="margin-bottom:5%; border-radius:20px; border-left-width: 15px;">
+            <div class="foreground" style="margin-bottom:5%; border-radius:20px; border-left-width: 15px; display: flex;">
                 <div style="flex: 1">
                     <img src="${movie.primaryImage.url}" alt="${movie.originalTitle}">
                 </div>
+                <div style="flex: 3.5;">
+                    <h3>${movie.primaryTitle}</h3>
+                    <h4>Transaction ID: ${transaction.transactionID}</h4>
+                    <h4>Total Price: RM ${Number(transaction.totalPrice).toFixed(2)}</h4>
+                    <a href="ticketInfo?movieID=${transaction.movieID}&transactionID=${transaction.transactionID}"><button class="viewTicket">View Details</button></a>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+async function displayTickets() {
+    const container = document.getElementById("ticketInfo");
+    const params = new URLSearchParams(window.location.search);
+    const transactionID = params.get("transactionID");
+
+    const response = await fetch(`getTickets.php?transactionID=${transactionID}`);
+    const data = await response.json();
+
+    const movie = await fetchMovieDetail(params.get("movieID"))
+
+    ticketInfo.innerHTML = data.map(ticket => {
+        return `
+            <div class="foreground" style="margin-bottom:5%; border-radius:20px; border-left-width: 15px; display: flex;">
+                <div style="flex: 1">
+                    <img src="qr-code.png" alt="QR code" style="width: 90%; height: auto;">
+                </div>
                 <div style="flex: 4;">
-                    <h2>${movie.primaryTitle}</h2>
-                    <h4>Transaction ID: ${ticket.transactionID}</h4>
-                    <h4>Total Price: RM ${ticket.totalPrice}</h4>
+                    <h3>${movie.primaryTitle}</h3>
+                    <h4>Ticket ID: ${ticket.ticketID}</h4>
                 </div>
             </div>
         `;

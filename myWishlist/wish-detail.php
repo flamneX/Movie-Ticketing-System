@@ -54,11 +54,11 @@
 
                 if (loggedUser == null) {
                     buyButton.innerHTML =  `
-                        <a href="/Movie-Ticketing-System/userAuthentication/index.php?movieID=${imdbId}" style="color: white; text-decoration: none;">LOG IN TO BUY</a>
+                        <a href="/Movie-Ticketing-System/userAuthentication/index.php?movieID=${imdbId}" style="color: white; text-decoration: none;">LOG IN TO WISHLIST</a>
                     `;
                 } else {
                     buyButton.innerHTML =  `
-                        <a href="/Movie-Ticketing-System/purchase/?movieID=${imdbId}" style="color: white; text-decoration: none;">BUY TICKET</a>
+                        <a href="" style="color: white; text-decoration: none;">ADD TO WISHLIST</a>
                     `;
                 }
             }

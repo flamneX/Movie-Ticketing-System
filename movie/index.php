@@ -14,7 +14,15 @@
         </div>
 
         <main>
-            <h1>Movies</h1>
+            <div style="display: flex">
+                <div style="flex: 1">
+                    <h1>Movies</h1>
+                </div>
+                <div style="flex: 1; text-align: right; padding-top: 4%;">
+                    <button class="selectButton" style="width: 20%; font-size: medium" onclick="handleButtonClick(displayCurrentMovie)">Current</button>
+                    <button class="selectButton" style="width: 20%; font-size: medium" onclick="handleButtonClick(displayUpcomingMovie)">Upcoming</button>
+                </div>
+            </div>
             <div id="movieContainer"></div>
         </main>
 
@@ -24,7 +32,7 @@
         
         <script src="script.js"></script>
         <script>
-            window.onload = displayCurrentMovie("movieContainer");
+            window.onload = handleButtonClick(displayCurrentMovie);
         </script>
     </body>
 </html>

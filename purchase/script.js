@@ -35,12 +35,12 @@ async function displayInfo(imdbId) {
 
     container.innerHTML =  `
         <img src="${movie.primaryImage.url}" alt="${movie.originalTitle}">
-        <div style="flex: 1">
+        <div style="flex: 1; padding-left: 4%">
             <h3 style="text-align: center;">${movie.primaryTitle}</h3>
             <br>
 
             <div style="display: flex; justify-content: space-between;">
-                <h5>Price per Ticket:</h5>
+                <h5>Ticket Price:</h5>
                 <h5>RM 15.00</h5>
             </div>
 
@@ -52,7 +52,7 @@ async function displayInfo(imdbId) {
             <hr>
 
             <div style="display: flex; justify-content: space-between;">
-                <h5>Price per Ticket (After Tax):</h5>
+                <h5>Ticket Price (After Tax):</h5>
                 <h5>RM 16.50</h5>
             </div>
 
