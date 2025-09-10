@@ -13,9 +13,8 @@
         </div>
 
         <main>
-            This is SIGN IN Page
+            <h1>My Wishlist</h1>
         </main>
-
         <?php
             include("../include/footer.php");
         ?>
