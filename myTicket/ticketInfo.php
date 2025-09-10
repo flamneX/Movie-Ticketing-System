@@ -5,12 +5,9 @@
         <link rel="stylesheet" href="../styles.css"/>
     </head>
     <body>
-        <div class="headContainer">
-            <?php
-                include("../include/header.php");
-                include("../include/navigation.php");
-            ?>
-        </div>
+        <?php
+            include("../include/header.php");
+        ?>
 
         <main>
             <h1>Ticket Details</h1>

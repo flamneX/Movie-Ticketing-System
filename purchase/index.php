@@ -5,13 +5,12 @@
         <link rel="stylesheet" href="../styles.css"/>
     </head>
     <body>
-        <div class="headContainer">
-            <?php
-                include("../include/header.php");
-                include("../include/navigation.php");
-            ?>
-        </div>
+        <!--Header-->
+        <?php
+            include("../include/header.php");
+        ?>
 
+        <!--Body-->
         <main>
             <h1>Ticket Purchase</h1>
             <div style="display: flex; justify-content: center;">

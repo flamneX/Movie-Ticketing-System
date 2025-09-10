@@ -5,15 +5,13 @@
         <link rel="stylesheet" href="styles.css"/>
     </head>
     <body>
-        <div class="headContainer">
-            <?php
-                include("include/header.php");
-                include("include/navigation.php");
-            ?>
-        </div>
+        <!--Header-->
+        <?php
+            include("include/header.php");
+        ?>
 
+        <!--Body-->
         <main>
-            
             <h1>Movie Showtimes</h1>
             <div class="Mmovie-Rrow-wrapper">
                 <button class="arrow left" onclick="scrollMovies(-1)">&#10094;</button>

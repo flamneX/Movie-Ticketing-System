@@ -6,12 +6,12 @@
     </head>
 
     <body>
-        <div class="headContainer">
-            <?php
-                include("../include/header.php");
-                include("../include/navigation.php");
-            ?>
-        </div>
+        <!--Header-->
+        <?php
+            include("../include/header.php");
+        ?>
+
+        <!--Body-->
         <main>
             <div class="container">
                 <div class="loginContainer" id="loginContainer">

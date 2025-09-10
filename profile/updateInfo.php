@@ -5,12 +5,11 @@
         <link rel="stylesheet" href="../styles.css"/>
     </head>
     <body onload="fetchUser(); setUpdateForm()">
-        <div class="headContainer">
-            <?php
-                include("../include/header.php");
-                include("../include/navigation.php");
-            ?>
-        </div>
+        <!--Header-->
+        <?php
+            include("../include/header.php");
+        ?>
+
         <main>
             <div class="container">
                 <div class="profileContainer">

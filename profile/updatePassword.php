@@ -5,12 +5,12 @@
         <link rel="stylesheet" href="../styles.css"/>
     </head>
     <body onload="setPasswordForm()">
-        <div class="headContainer">
-            <?php
-                include("../include/header.php");
-                include("../include/navigation.php");
-            ?>
-        </div>
+        <!--Header-->
+        <?php
+            include("../include/header.php");
+        ?>
+        
+        <!--Body-->
         <main>
             <div class="container">
                 <div class="profileContainer">

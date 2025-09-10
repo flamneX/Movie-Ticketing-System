@@ -4,26 +4,26 @@
         <title>Absolute Cinema</title>
         <link rel="stylesheet" href="../styles.css"/>
     </head>
-    <body>
-        <div class="headContainer">
-            <?php
-                include("../include/header.php");
-                include("../include/navigation.php");
-            ?>
-        </div>
+    <body onload="displayWishlist()">
+        <!--Header-->
+        <?php
+            include("../include/header.php");
+        ?>
 
+        <!--Body-->
         <main>
-            <h1>My Wishlist</h1>
-            <div id="myWishlistContainer"></div>
+            <div class="container">
+                <div class="containerHeader">
+                    <h1>My Wishlist</h1>
+                </div>
+                <div id="myWishlistContainer"></div>
+            </div>
         </main>
-        <script src="script.js"></script>
-          <script>
-            window.onload = () => {
-                displayWishlist();
-            }
-        </script>
+        
+        <!--Footer-->
         <?php
             include("../include/footer.php");
         ?>
+        <script src="script.js"></script>
     </body>
 </html>

@@ -61,11 +61,6 @@ async function fetchMovieArray(url) {
 async function displayCurrentMovie() {
     const container = document.getElementById("movieContainer");
     container.innerHTML = '';
-    
-    let counter = 0;
-    let rowDiv = document.createElement("div");
-    rowDiv.className = "movie-row";
-    rowDiv.classList.add("hidden");
 
     let url = `https://api.imdbapi.dev/titles?types=MOVIE&genres=Animation&languageCodes=ja&endYear=`
       + (new Date().getFullYear() - 3) + `&sortBy=SORT_BY_RELEASE_DATE&sortOrder=DESC`;
@@ -83,8 +78,6 @@ async function displayCurrentMovie() {
         const movieOverlay = document.createElement("div");
         movieOverlay.className = "movie-overlay";
 
-        console.log(document.getElementById("movieContainer"));
-
         movieOverlay.innerHTML = `
         <div style="height: 365px">
           <h3>${movie.primaryTitle}</h3>
@@ -97,30 +90,9 @@ async function displayCurrentMovie() {
         </div>
         `;
         movieDiv.appendChild(movieOverlay);
-
-        rowDiv.appendChild(movieDiv);
+        container.appendChild(movieDiv);
         
-        counter++;
-
-        if (counter === 4) {
-          container.appendChild(rowDiv);
-
-          void rowDiv.offsetWidth;
-          rowDiv.classList.remove("hidden");
-          rowDiv.classList.add("fade-in");
-
-          rowDiv = document.createElement("div");
-          rowDiv.className = "movie-row hidden";
-          counter = 0;
-        }
-    }
-
-    // Append any remaining movies in the last row
-    if (counter > 0) {
-
-        void rowDiv.offsetWidth;
-        rowDiv.classList.remove("hidden");
-        rowDiv.classList.add("fade-in");
+        movieDiv.classList.add("fade-in");
     }
 }
 
@@ -129,20 +101,16 @@ async function displayUpcomingMovie() {
     const container = document.getElementById("movieContainer");
     container.innerHTML = '';
 
-    let counter = 0;
-    let rowDiv = document.createElement("div");
-    rowDiv.className = "movie-row";
-    rowDiv.classList.add("hidden");
-
     // Fetch Series
     const url = `https://api.imdbapi.dev/titles?types=MOVIE&genres=Animation&languageCodes=ja&endYear=`
       + new Date().getFullYear() + `&sortBy=SORT_BY_RELEASE_DATE&sortOrder=DESC`;
     const UPCOMING_SERIES = await fetchMovieArray(url);
     
-    for (const movie of UPCOMING_SERIES) {
-        if (movie.primaryImage === undefined || !movie) {
+    for (const movieData of UPCOMING_SERIES) {
+        if (movieData.primaryImage === undefined || !movieData) {
           continue;
         }
+        const movie = await fetchMovieDetail(movieData.id);
 
         const movieDiv = document.createElement("div");
         movieDiv.className = "movie-card";
@@ -162,29 +130,9 @@ async function displayUpcomingMovie() {
         </div>
         `;
         movieDiv.appendChild(movieOverlay);
-
-        rowDiv.appendChild(movieDiv);
-        counter++;
-
-        if (counter === 4) {
-          container.appendChild(rowDiv);
-
-          void rowDiv.offsetWidth;
-          rowDiv.classList.remove("hidden");
-          rowDiv.classList.add("fade-in");
-
-          rowDiv = document.createElement("div");
-          rowDiv.className = "movie-row hidden";
-          counter = 0;
-        }
-    }
-
-    // Append any remaining movies in the last row
-    if (counter > 0) {
-
-        void rowDiv.offsetWidth;
-        rowDiv.classList.remove("hidden");
-        rowDiv.classList.add("fade-in");
+        container.appendChild(movieDiv);
+        
+        movieDiv.classList.add("fade-in");
     }
 }
 

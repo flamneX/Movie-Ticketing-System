@@ -10,12 +10,9 @@
         </style>
     </head>
     <body>
-        <div class="headContainer">
-            <?php
-                include("../include/header.php");
-                include("../include/navigation.php");
-            ?>
-        </div>
+        <?php
+            include("../include/header.php");
+        ?>
 
         <main>
             <h2>Hey there! Thanks for choosing <strong>Absolute Cinema</strong>!</h2>

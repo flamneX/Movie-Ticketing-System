@@ -125,6 +125,7 @@ async function initBanner() {
     // Initialize the banner
     const banner = new Banner('banner', bannerImages, 5000);
 }
+
 // Initialize banner when DOM is fully loaded
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initBanner);
@@ -199,6 +200,7 @@ async function displayMovie() {
 
         const movieDiv = document.createElement("div");
         movieDiv.className = "movie-card";
+        movieDiv.style = "margin: 0 5px";
         movieDiv.innerHTML = `<img src="${movie.primaryImage.url}" alt="${movie.originalTitle}">`;
         const movieOverlay = document.createElement("div");
         movieOverlay.className = "movie-overlay";

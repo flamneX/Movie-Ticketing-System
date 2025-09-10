@@ -105,7 +105,7 @@ async function displayWishlist() {
     const data = await response.json();
 
     if (data.length === 0) {
-        wishlist.innerHTML = "<h3>No wishlist found.</h3>";
+        wishlist.innerHTML = "<h3>No Item(s) Found.</h3>";
         return;
     }
 

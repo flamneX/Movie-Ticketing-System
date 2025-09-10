@@ -5,12 +5,9 @@
         <link rel="stylesheet" href="../styles.css"/>
     </head>
     <body onload="fetchUser()">
-        <div class="headContainer">
-            <?php
-                include("../include/header.php");
-                include("../include/navigation.php");
-            ?>
-        </div>
+        <?php
+            include("../include/header.php");
+        ?>
         <main>
             <div class="container">
                 <div class="profileContainer">
