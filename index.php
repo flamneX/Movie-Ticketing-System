@@ -11,7 +11,7 @@
                 include("include/navigation.php");
             ?>
         </div>
-
+    
         <main>
             
             <h1>Movie Showtimes</h1>

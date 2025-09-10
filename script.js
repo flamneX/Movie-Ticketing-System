@@ -1,9 +1,15 @@
-const bannerImages = ['images/banner1.png',
-    //{ url: 'banner_image.webp' },
-    // { url: 'banner_image_1.jpg' },
-    // { url: 'banner_image_2.webp' },
-    // { url: 'banner_image_3.webp' },
-    // { url: 'banner_image_4.webp' }
+const bannerImages = [
+    'images/banner1.png',
+    'images/banner_img_.jpg',
+    'images/banner_img_1.jpg',
+    'images/banner_img_2.jpg',
+    'images/banner_img_3.jpg',
+    'images/banner_img_3.webp',
+    'images/banner_img_4.jpg',
+    'images/banner_image_4.webp',
+    'images/banner_image_5.avif',
+    'images/banner_img_6.jpg',
+    'images/banner_image_7.webp'
 ];
 
 // Initialize banner function
