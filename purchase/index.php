@@ -54,7 +54,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="foreground" style="flex: 1">
+                <div class="foreground" style="flex: 1.3;">
                     <h2 style="text-align: center;">Purchase Summary</h2>
                     <div id="paymentInfo" style="display: flex;"></div>
                 </div>
