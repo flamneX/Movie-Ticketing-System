@@ -36,7 +36,7 @@
             }
             mysqli_stmt_close($ticketStmt);
 
-            header("Location: success.php");
+            header("Location: gateway.php");
             exit;
         } else {
             echo "Error: " . mysqli_stmt_error($stmt);
