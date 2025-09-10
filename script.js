@@ -1,36 +1,13 @@
-const bannerImages = [
-    { url: 'images/banner1.png' },
+const bannerImages = ['images/banner1.png',
     //{ url: 'banner_image.webp' },
     // { url: 'banner_image_1.jpg' },
     // { url: 'banner_image_2.webp' },
     // { url: 'banner_image_3.webp' },
     // { url: 'banner_image_4.webp' }
-
 ];
-
-// Preload images for smoother transitions
-async function preloadImages() {
-    const imagePromises = bannerImages.map(imageData => {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.src = imageData.url;
-            img.onload = resolve;
-            img.onerror = reject;
-        });
-    });
-
-    try {
-        await Promise.all(imagePromises);
-        console.log('All banner images preloaded successfully');
-    } catch (error) {
-        console.error('Error preloading images:', error);
-    }
-}
 
 // Initialize banner function
 async function initBanner() {
-    // Preload images first
-    await preloadImages();
     
     // Then initialize the banner functionality
     class Banner {
@@ -201,13 +178,14 @@ async function fetchMovieArray(url) {
     }
 }
 
-// display the movies
-async function displayMovie(containerId) {
-    const container = document.getElementById(containerId);
-
+async function displayMovie() {
+    const container = document.getElementById("movieContainer");
+    container.innerHTML = '';
+    
     let counter = 0;
     let rowDiv = document.createElement("div");
     rowDiv.className = "movie-row";
+    rowDiv.classList.add("hidden");
 
     let url = `https://api.imdbapi.dev/titles?types=MOVIE&genres=Animation&languageCodes=ja&endYear=`
       + (new Date().getFullYear() - 3) + `&sortBy=SORT_BY_RELEASE_DATE&sortOrder=DESC`;
@@ -217,14 +195,15 @@ async function displayMovie(containerId) {
         if (movieData.primaryImage === undefined || !movieData) {
           continue;
         }
-
         const movie = await fetchMovieDetail(movieData.id);
 
         const movieDiv = document.createElement("div");
         movieDiv.className = "movie-card";
         movieDiv.innerHTML = `<img src="${movie.primaryImage.url}" alt="${movie.originalTitle}">`;
         const movieOverlay = document.createElement("div");
-        movieOverlay.className = "overlay";
+        movieOverlay.className = "movie-overlay";
+
+        console.log(document.getElementById("movieContainer"));
 
         movieOverlay.innerHTML = `
         <div style="height: 365px">
@@ -234,18 +213,30 @@ async function displayMovie(containerId) {
           <h5><i class="fa-solid fa-language" style="color: #A76BCE; padding-right: 1%"></i> ${movie.spokenLanguages && movie.spokenLanguages.length > 0 ? movie.spokenLanguages[0].name : 'N/A'}</h5>
         </div>
         <div style="display: flex; justify-content: center;">
-          <a href="movie-detail.php?movieID=${movie.id}"><button>BUY TICKET</button><a>
+          <a href="movie/movie-detail.php?movieID=${movie.id}"><button>BUY TICKET</button><a>
         </div>
         `;
         movieDiv.appendChild(movieOverlay);
 
         rowDiv.appendChild(movieDiv);
+        
         counter++;
 
-        if (counter === 10) {
-            container.appendChild(rowDiv);
-            return;
+        if (counter === 20) {
+          container.appendChild(rowDiv);
+
+          rowDiv.classList.remove("hidden");
+          rowDiv.classList.add("fade-in");
+          break;
         }
+    }
+
+    // Append any remaining movies in the last row
+    if (counter > 0) {
+
+        void rowDiv.offsetWidth;
+        rowDiv.classList.remove("hidden");
+        rowDiv.classList.add("fade-in");
     }
 }
 
