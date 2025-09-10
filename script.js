@@ -1,10 +1,10 @@
 const bannerImages = [
-    { url: 'images.jpeg' },
+    { url: 'images/banner1.png' },
     //{ url: 'banner_image.webp' },
-    { url: 'banner_image_1.jpg' },
-    { url: 'banner_image_2.webp' },
-    { url: 'banner_image_3.webp' },
-    { url: 'banner_image_4.webp' }
+    // { url: 'banner_image_1.jpg' },
+    // { url: 'banner_image_2.webp' },
+    // { url: 'banner_image_3.webp' },
+    // { url: 'banner_image_4.webp' }
 
 ];
 
@@ -186,19 +186,20 @@ async function fetchMoviePreview(imdbId) {
     }
 }
 
-// list of movies to display
-const SERIES_IDs = [
-  "tt2457282",
-  "tt30648377",
-  "tt8091892",
-  "tt4054952",
-  "tt1587156",
-  "tt8092118",
-  "tt1909796",
-  "tt12007484",
-  "tt9534948",
-  "tt13997358",
-];
+// fetch Array of Movie json from IMDB ID
+async function fetchMovieArray(url) {
+  try {
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
+        return data.titles;
+
+    } 
+    catch (error) {
+        console.error("Error fetching movie:", error);
+        return null;
+    }
+}
 
 // display the movies
 async function displayMovie(containerId) {
@@ -208,9 +209,16 @@ async function displayMovie(containerId) {
     let rowDiv = document.createElement("div");
     rowDiv.className = "movie-row";
 
-    for (const id of SERIES_IDs) {
-        const movie = await fetchMovieDetail(id);
-        if(!movie) continue;
+    let url = `https://api.imdbapi.dev/titles?types=MOVIE&genres=Animation&languageCodes=ja&endYear=`
+      + (new Date().getFullYear() - 3) + `&sortBy=SORT_BY_RELEASE_DATE&sortOrder=DESC`;
+    const NEWEST_SHOWS = await fetchMovieArray(url);
+
+    for (const movieData of NEWEST_SHOWS) {
+        if (movieData.primaryImage === undefined || !movieData) {
+          continue;
+        }
+
+        const movie = await fetchMovieDetail(movieData.id);
 
         const movieDiv = document.createElement("div");
         movieDiv.className = "movie-card";
@@ -219,14 +227,14 @@ async function displayMovie(containerId) {
         movieOverlay.className = "overlay";
 
         movieOverlay.innerHTML = `
-        <div style="height: 410px">
+        <div style="height: 365px">
           <h3>${movie.primaryTitle}</h3>
-          <h5><i class="fa-solid fa-tag" style="color: #A76BCE;"></i> ${movie.genres?.slice(0,3).join(', ') || 'N/A'}</h5>
-          <h5><i class="fa-solid fa-clock" style="color: #A76BCE;"></i> ${movie.runtimeSeconds ? movie.runtimeSeconds / 60 : 'N/A'} mins</h5>
-          <h5><i class="fa-solid fa-language" style="color: #A76BCE;"></i> ${movie.spokenLanguages && movie.spokenLanguages.length > 0 ? movie.spokenLanguages[0].name : 'N/A'}</h5>
+          <h5><i class="fa-solid fa-tag" style="color: #A76BCE; padding-right: 1%"></i> ${movie.genres?.slice(0,3).join(', ') || 'N/A'}</h5>
+          <h5><i class="fa-solid fa-clock" style="color: #A76BCE; padding-right: 1%"></i> ${movie.runtimeSeconds ? movie.runtimeSeconds / 60 : 'N/A'} mins</h5>
+          <h5><i class="fa-solid fa-language" style="color: #A76BCE; padding-right: 1%"></i> ${movie.spokenLanguages && movie.spokenLanguages.length > 0 ? movie.spokenLanguages[0].name : 'N/A'}</h5>
         </div>
         <div style="display: flex; justify-content: center;">
-          <button><a href="movie-detail.php?id=${movie.id}">BUY TICKET<a></button>
+          <a href="movie-detail.php?movieID=${movie.id}"><button>BUY TICKET</button><a>
         </div>
         `;
         movieDiv.appendChild(movieOverlay);
@@ -234,41 +242,13 @@ async function displayMovie(containerId) {
         rowDiv.appendChild(movieDiv);
         counter++;
 
-        if (counter === 4) {
+        if (counter === 10) {
             container.appendChild(rowDiv);
-            rowDiv = document.createElement("div");
-            rowDiv.className = "movie-row";
-            counter = 0;
+            return;
         }
     }
-
-    // Append any remaining movies in the last row
-    if (counter > 0) {
-        container.appendChild(rowDiv);
-    }
 }
 
-
-// display movie detail
-async function displayPreview(imdbId) {
-  const container = document.getElementById("vid");
-
-  const video = await fetchMoviePreview(imdbId);
-
-  if(Object.keys(video).length === 0 && video.constructor === Object) {
-    container.innerHTML = "Video Preview Not Available";
-  } else {
-    container.innerHTML = `
-    <iframe 
-      width="640" 
-      height="360" 
-      src="https://www.imdb.com/video/imdb/${video.videos[0].id}/imdb/embed"
-      frameborder="0" 
-      allowfullscreen>
-    </iframe>
-  `;
-  }
-}
 function scrollMovies(direction) {
     const row = document.getElementById("movieContainer");
     const cardWidth = row.querySelector(".movie-card")?.offsetWidth || 220; 

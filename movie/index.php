@@ -19,8 +19,8 @@
                     <h1>Movies</h1>
                 </div>
                 <div style="flex: 1; text-align: right; padding-top: 4%;">
-                    <button class="selectButton" style="width: 20%; font-size: medium" onclick="handleButtonClick(displayCurrentMovie)">Current</button>
-                    <button class="selectButton" style="width: 20%; font-size: medium" onclick="handleButtonClick(displayUpcomingMovie)">Upcoming</button>
+                    <button id="currentBtn" class="selectButton movie-filter-button active" onclick="handleButtonClick(displayCurrentMovie)">Current</button>
+                    <button id="upcomingBtn" class="selectButton movie-filter-button" onclick="handleButtonClick(displayUpcomingMovie)">Upcoming</button>
                 </div>
             </div>
             <div id="movieContainer"></div>
