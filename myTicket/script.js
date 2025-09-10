@@ -21,7 +21,7 @@ async function displayTransactions() {
     const data = await response.json();
 
     if (data.length === 0) {
-        tickets.textContent = "No tickets found.";
+        tickets.innerHTML = "<h3>No tickets found.</h3>";
         return;
     }
 

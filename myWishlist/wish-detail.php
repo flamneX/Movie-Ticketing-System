@@ -20,7 +20,7 @@
                 <div style="flex: 1; padding-right: 3%">
                     <div id="movieInfo"></div>
                     <div style="display: flex; justify-content: center">
-                        <button id="buyButton"></button>
+                        <button id="wishButton"></button>
                     </div>
                 </div>
                 <div id="moviePlot" style="flex: 3;">
@@ -44,22 +44,40 @@
         
         <script src="script.js"></script>
         <script>
-            window.onload = () => {
+            window.onload = async () => {
                 const params = new URLSearchParams(window.location.search);
                 const imdbId = params.get("movieID");
                 displayPreview(imdbId);
                 displayDetails(imdbId);
 
-                const buyButton = document.getElementById("buyButton");
+                const wishButton = document.getElementById("wishButton");
+                const loggedUser = localStorage.getItem("loggedUserID");
 
                 if (loggedUser == null) {
-                    buyButton.innerHTML =  `
-                        <a href="/Movie-Ticketing-System/userAuthentication/index.php?movieID=${imdbId}" style="color: white; text-decoration: none;">LOG IN TO WISHLIST</a>
-                    `;
+                    wishButton.textContent = "LOG IN TO WISHLIST";
+                    wishButton.onclick = () => {
+                        window.location.href = `/Movie-Ticketing-System/userAuthentication/index.php?movieID=${imdbId}`;
+                    };
                 } else {
-                    buyButton.innerHTML =  `
-                        <a href="" style="color: white; text-decoration: none;">ADD TO WISHLIST</a>
-                    `;
+                    const wishlisted = await isWishlisted(imdbId);
+                    if (wishlisted) {
+                        wishButton.textContent = "REMOVE FROM WISHLIST";
+                        wishButton.onclick = async () => {
+                            wishButton.textContent = "ADD TO WISHLIST";
+                            const success = await removeWishlist(imdbId);
+                            if(success) {
+                                location.reload();
+                            }
+                        };
+                    } else {
+                        wishButton.textContent = "ADD TO WISHLIST";
+                        wishButton.onclick = async () => {
+                            const success = await addWishlist(imdbId);
+                            if(success) {
+                                location.reload();
+                            }
+                        };
+                    }
                 }
             }
         </script>

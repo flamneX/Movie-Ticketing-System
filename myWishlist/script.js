@@ -96,3 +96,66 @@ function createWikiLinks(container, items) {
     }
   });
 }
+
+async function displayWishlist() {
+    const wishlist = document.getElementById("myWishlistContainer");
+    const userID = localStorage.getItem("loggedUserID");
+
+    const response = await fetch(`getWishlist.php?userID=${userID}`);
+    const data = await response.json();
+
+    if (data.length === 0) {
+        wishlist.innerHTML = "<h3>No wishlist found.</h3>";
+        return;
+    }
+
+    const movieDetails = await Promise.all(
+        data.map(wishlist => fetchMovieDetail(wishlist.movieID))
+    );
+
+    wishlist.innerHTML = data.map((wishlist, i) => {
+        const movie = movieDetails[i];
+        return `
+            <div class="foreground" style="margin-bottom:5%; border-radius:20px; border-left-width: 15px; display: flex;">
+              <div style="flex: 1">
+                    <img src="${movie.primaryImage.url}" alt="${movie.originalTitle}">
+                </div>
+                <div style="flex: 3.5;">
+                    <h3>${movie.primaryTitle}</h3>
+                    <a href="wish-detail?movieID=${wishlist.movieID}"><button class="viewTicket">View Details</button></a>
+                </div>
+            </div>
+        `;
+    }).join('');
+}
+
+async function isWishlisted(imdbId) {
+  const userID = localStorage.getItem("loggedUserID");
+
+  const response = await fetch(`isWishlisted.php?userID=${userID}&movieID=${imdbId}`);
+  const data = await response.json();
+
+  return data.length > 0;
+}
+
+async function addWishlist(imdbId) {
+  const userID = localStorage.getItem("loggedUserID");
+  const response = await fetch('addWishlist.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `userID=${encodeURIComponent(userID)}&movieID=${encodeURIComponent(imdbId)}`
+  });
+  const result = await response.json();
+  return result.success;
+}
+
+async function removeWishlist(imdbId) {
+  const userID = localStorage.getItem("loggedUserID");
+  const response = await fetch('removeWishlist.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `userID=${encodeURIComponent(userID)}&movieID=${encodeURIComponent(imdbId)}`
+  });
+  const result = await response.json();
+  return result.success;
+}
