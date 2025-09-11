@@ -36,8 +36,6 @@ main {
     color: black;
     font-size: larger;
     background-image: linear-gradient(to bottom, #BF94E4, #7F00FF);
-    padding: 0 10%;
-    padding-bottom: 5%;
 }
 
 .container {
@@ -46,6 +44,8 @@ main {
     flex-wrap: wrap;
     min-width: 100%;
     box-sizing: border-box;
+    padding: 0 10%;
+    padding-bottom: 5%;
 }
 
 .containerHeader {
@@ -270,19 +270,18 @@ main {
     flex-direction: column;
     justify-items: flex-start;
     align-items: center;
+    box-sizing: border-box;
+    padding: 1em 0;
     min-width: 25%;
-    max-width: 100%;
-    height: fit-content;
+    width: min-content;
+    height: min-content;
     background-color: #222222;
     border-radius: 30px;
-    padding: 2% 0;
+    box-shadow: 0 0 1em rgb(0, 0, 0, 0.35);
 }
 
 #movieDetail {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0 5%;
+    width: 300px;
     color: #ffffff;
 }
 
@@ -307,16 +306,16 @@ main {
 
 #moviePlot {
     display: flex;
+    flex: auto;
     flex-direction: column;
     position: relative;
-    max-width: 100%;
-    width: 75%;
+    max-width: 75%;
+    min-width: 75%;
+    box-sizing: border-box;
 }
 
 #moviePreview {
     display: flex;
-    max-width: 100%;
-    max-height: 600px;
 }
 
 #moviePlot div a {

@@ -171,16 +171,27 @@ async function displayDetails(imdbId) {
     <img src="${movie.primaryImage.url}" alt="${movie.originalTitle}">
     <div id="movieDetail">
       <h5><i class="fa-solid fa-tag"></i> ${movie.genres?.join(', ') || 'N/A'}</h5>
-      <h5><i class="fa-solid fa-clock"></i> ${movie.runtimeSeconds ? Math.floor(movie.runtimeSeconds / 60) : '727'} mins</h5>
+      <h5><i class="fa-solid fa-clock"></i> ${movie.runtimeSeconds ? Math.floor(movie.runtimeSeconds / 60) : 'N/A'} mins</h5>
       <h5><i class="fa-solid fa-language"></i> ${movie.spokenLanguages?.[0]?.name || 'N/A'}</h5>
     </div>
-    <button id="buyButton">Buy Ticket</button>
+    <button id="buyButton"></button>
   `;
+
+  const buyButton = document.getElementById("buyButton");
+  if (loggedUser == null) {
+    buyButton.innerHTML =  `
+      <a href="/Movie-Ticketing-System/userAuthentication/index.php?movieID=${imdbId}" style="color: white; text-decoration: none;">LOG IN TO BUY</a>
+    `;
+  } 
+  else {
+    buyButton.innerHTML =  `
+      <a href="/Movie-Ticketing-System/purchase/?movieID=${imdbId}" style="color: white; text-decoration: none;">BUY TICKET</a>
+    `;
+  }
 
   const synopsis = document.getElementById("syn");
   synopsis.textContent = movie.plot || "No synopsis available.";
 
-  createWikiLinks(document.getElementById("cas"), movie.stars);
   createWikiLinks(document.getElementById("dir"), movie.directors);
   createWikiLinks(document.getElementById("wri"), movie.writers);
 }
