@@ -53,3 +53,11 @@ CREATE TABLE IF NOT EXISTS ticket (
     FOREIGN KEY (userID) REFERENCES user(userID),
     FOREIGN KEY (transactionID) REFERENCES transaction(transactionID)
 );
+
+-- Creating the Contact Table
+DROP TABLE IF EXISTS userMessage;
+CREATE TABLE IF NOT EXISTS userMessage (
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    message VARCHAR(300) NOT NULL
+);

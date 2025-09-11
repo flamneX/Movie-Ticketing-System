@@ -25,29 +25,26 @@
                     <!-- Contact Form Section on Left -->
                     <div class="contact-form">
                         <h2>Send Us a Message</h2>
-                        <form id="contactForm" action="process_contact.php" method="POST" novalidate>
+                        <form id="contactForm" action="process_contact.php" method="POST">
                             <table>
                                 <tr>
                                     <td><label for="name">Your Name:</label></td>
                                     <td>
-                                        <input type="text" id="name" name="name" class="form-input" required>
-                                        <span id="nameError" class="error"></span>
+                                        <input type="text" id="name" name="name" class="form-input" maxlength="50" required>
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td><label for="email">Your Email:</label></td>
                                     <td>
-                                        <input type="email" id="email" name="email" class="form-input" required>
-                                        <span id="emailError" class="error"></span>
+                                        <input type="email" id="email" name="email" class="form-input" maxlength="50" required>
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <td><label for="message">Your Message:</label></td>
                                     <td>
-                                        <textarea id="message" name="message" class="form-textarea" required></textarea>
-                                        <span id="messageError" class="error"></span>
+                                        <textarea id="message" name="message" class="form-textarea" maxlength="50" placeholder="300 CHARACTER LIMIT"></textarea>
                                     </td>
                                 </tr>
 
@@ -93,7 +90,12 @@
             include("../include/footer.php"); 
         ?>
 
-        <!-- JavaScript validation (aligned with your example’s spirit) -->
-        <script src = "script.js"></script>
+        <script>
+        if (new URLSearchParams(window.location.search).get('success') === '1') {
+            alert('Your message has been sent successfully!');
+            // Optionally, remove the query string from the URL:
+            history.replaceState(null, '', window.location.pathname);
+        }
+        </script>
     </body>
 </html>
