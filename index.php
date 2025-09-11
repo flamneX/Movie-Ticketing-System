@@ -4,6 +4,19 @@
         <title>Absolute Cinema</title>
         <link rel="stylesheet" href="styles.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <style>
+            .promo {
+                margin-bottom: 2%;
+                width: 100%;
+                height: auto;
+                border-radius: 20px;
+                box-shadow: 0 0 1em rgba(0, 0, 0, 0.35);
+            }
+
+            .promo:hover {
+                cursor: pointer;
+            }
+        </style>
     </head>
     <body>
         <!--Header-->
@@ -40,8 +53,8 @@
                 <br>
 
                 <h4>Promotions and News</h4>
-                <img src="images/promotions/promotion1" alt="ticket price" style="margin-bottom: 2%; width: 100%; height:auto; border-radius: 15px; box-shadow: 0 0 1em rgba(0, 0, 0, 0.35);">
-                <img src="images/promotions/promotion2" alt="payment method" style="width: 100%; height:auto; border-radius: 15px; box-shadow: 0 0 1em rgba(0, 0, 0, 0.35);">
+                <img class="promo" onclick="window.location.href='info/promotion1'" src="images/promotions/promotion1" alt="ticket price">
+                <img class="promo" onclick="window.location.href='info/promotion2'" src="images/promotions/promotion2" alt="payment method">
             </div>
         </main>
 
