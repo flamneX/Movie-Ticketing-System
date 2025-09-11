@@ -385,6 +385,7 @@ main {
     border: none;
     background: none;
     font-weight: 800;
+    color: #FFFFFF;
 }
 
 .selectButton {
@@ -437,6 +438,7 @@ main {
     border: 3px solid transparent;
     border-radius: 8px;
     transition: box-shadow 0.2s ease;
+    background-color: #FFFFFF;
 }
 
 .payment-option input[type="radio"]:checked + img {
@@ -459,6 +461,7 @@ main {
     align-items: center;
     box-sizing: border-box;
     padding: 1em 0;
+    margin: 0 3% 3% 0;
     min-width: 30%;
     width: min-content;
     height: min-content;
@@ -473,9 +476,8 @@ main {
 }
 
 #paymentInfo img {
-    flex: 1;
-    width: 250px;
-    height: 450px;
+    width: 300px;
+    height: 562px;
     object-fit: cover;
     border-radius: 10px;
 }
