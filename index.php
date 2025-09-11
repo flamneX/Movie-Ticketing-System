@@ -3,6 +3,7 @@
     <head>
         <title>Absolute Cinema</title>
         <link rel="stylesheet" href="styles.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
     <body>
         <!--Header-->
@@ -12,14 +13,36 @@
 
         <!--Body-->
         <main>
-            <h1>Movie Showtimes</h1>
-            <div class="Mmovie-Rrow-wrapper">
-                <button class="arrow left" onclick="scrollMovies(-1)">&#10094;</button>
-                <div class="Mmovie-Rrow" id="movieContainer"></div>
-                 <!-- JS will populate movie cards here -->
-                <button class="arrow right" onclick="scrollMovies(1)">&#10095;</button>
+            <div class="home-movie-row-wrapper">
+                    <div class="home-movie-row-wrapper" id="banners"></div>
             </div>
-            <div id="vid"></div>
+
+            <div class="container">
+                <h1 style="margin: 0;">Home</h1>    
+                <h4>Current Movie Showcase</h4>
+                <div class="home-movie-row-wrapper" style="border-radius: 15px; background-color: #222222;">
+                    <button class="arrow left" onclick=scrollCurrentMovies(-1)>&#10094;</button>
+                    <div class="home-movie-row-wrapper" style="padding: 3%; width:94%" id="currentMovieContainer"></div>
+                    <!-- JS will populate movie cards here -->
+                    <button class="arrow right" onclick=scrollCurrentMovies(1)>&#10095;</button>
+                </div>
+                <br>
+                <br>
+
+                <h4>Upcoming Movie Showcase</h4>
+                <div class="home-movie-row-wrapper" style="border-radius: 15px; background-color: #222222">
+                    <button class="arrow left" onclick=scrollUpcomingMovies(-1)>&#10094;</button>
+                    <div class="home-movie-row-wrapper" style="padding: 3%; width:94%" id="upcomingMovieContainer"></div>
+                    <!-- JS will populate movie cards here -->
+                    <button class="arrow right" onclick=scrollUpcomingMovies(1)>&#10095;</button>
+                </div>
+                <br>
+                <br>
+
+                <h4>Promotions and News</h4>
+                <img src="images/promotions/promotion1" alt="ticket price" style="margin-bottom: 2%; width: 100%; height:auto; border-radius: 15px; box-shadow: 0 0 1em rgba(0, 0, 0, 0.35);">
+                <img src="images/promotions/promotion2" alt="payment method" style="width: 100%; height:auto; border-radius: 15px; box-shadow: 0 0 1em rgba(0, 0, 0, 0.35);">
+            </div>
         </main>
 
         <?php
@@ -27,12 +50,11 @@
         ?>
         <script src="script.js"></script>
         <script>
-            window.onload = displayMovie("movieContainer");
-        </script>
-        <script>
-            window.onload = () => {
-                const params = new URLSearchParams(window.location.search);
-                const imdbId = params.get("id");
+            window.onload = async () => {
+                displayBanner();
+                startBannerInterval();
+                await displayCurrentMovie();
+                await displayUpcomingMovie();
             }
         </script>
     </body>
