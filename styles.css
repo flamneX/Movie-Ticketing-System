@@ -42,8 +42,8 @@ main {
 
 .container {
     display: flex;
+    flex: auto;
     flex-direction: column;
-    flex-wrap: wrap;
     min-width: 100%;
     box-sizing: border-box;
     padding: 0 5%;
@@ -109,6 +109,7 @@ main {
     border-radius: 10px;
     transition: box-shadow 0.4s ease;
     margin: 0.5em 0.5em;
+    cursor: pointer;
 }
 
 .topNavigation button:hover {
@@ -226,6 +227,7 @@ main {
 
 .wishlist-card:hover {
     transform: scale(1.05);
+    transition: transform 0.4s ease-in-out;
 }
 
 .wishlist-card .movie-card:hover {
@@ -316,7 +318,7 @@ main {
 
 #movieInfo img {
     width: 300px;
-    height: 450px;
+    height: 562px;
     object-fit: cover;
     border-radius: 10px;
     transition: transform 0.4s ease;
@@ -366,6 +368,7 @@ main {
     color: white;
     border-radius: 10px;
     transition: box-shadow 0.4s ease;
+    cursor: pointer;
 }
 
 .detailButton:hover {
@@ -542,8 +545,10 @@ main {
 /*Styling for my ticket page*/
 #ticketContainer {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex: auto;
+    flex-direction: column;
+    min-height: 100%;
+    box-sizing: border-box;
 }
 
 .ticket-card {
@@ -579,6 +584,7 @@ main {
 
 .ticketTransaction:hover {
     transform: scale(1.05);
+    transition: transform 0.5s ease-in-out;
 }
 
 .ticketTransaction:hover .movie-card:hover{
@@ -613,7 +619,7 @@ main {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 100%;
+    min-width: 100%;
     height: min-content;
     border-left: 10px solid #222222;
     padding: 1% 1% 1% 1.5%;
@@ -749,7 +755,6 @@ main {
     min-width: 300px;
     max-width: 100%;
     min-height: 500px;
-    max-height: 100%;
     aspect-ratio: 2/1;
     margin-top: 5%;
 }
@@ -928,35 +933,46 @@ main {
 /* Styling for User Profile*/
 .profileContainer {
     display: flex;
-    flex: auto;
     flex-direction: column;
     align-items: center;
     min-width: 300px;
-    max-width: 100%;
-    min-height: 500px;
     background-color: #222222;
     color: #ffffff;
     border-radius: 50px;
     box-shadow: 0 0 1em rgba(0, 0, 0, 0.35);
+    box-sizing: border-box;
     margin: 5% 0 3% 0;
-    padding: 1% 10%;
+    padding: 2% 20%;
 }
 
 .profileContainer h1 {
     color: #9d00ff;
 }
+
+.profileContainer form {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    min-width: 100%;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
 .profileContainer label {
-    font-size: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: larger;
     font-weight: 1000;
+    width: 20%;
 }
 
 .profileContainer .inputField {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: center;
     box-sizing: border-box;
-    width: 800px;
-    padding: 0 100px;
+    min-width: 100%;
+    text-align: right;
 }
 
 .profileContainer .errorField {
@@ -965,20 +981,22 @@ main {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    width: 800px;
-    padding: 0 100px;
+    width: 100%;
 }
 
 .inputField input {
+    display: flex;
     background-color: #dddddd;
     border-style: none;
     border-left: 5px solid #a719ff;
-    border-radius: 4px 0 0 4px;
-    margin: 10px;
-    padding: 15px 20px;
-    font-size: 18px;
-    width: 70%;
+    border-radius: 10px 0 0 10px;
+    font-size: larger;
+    width: 80%;
     outline: none;
+    box-sizing: border-box;
+    margin: 1em 1em;
+    padding: 1em 1em;
+    box-sizing: border-box;
 }
 
 .errorField errorText {
@@ -996,19 +1014,27 @@ main {
 }
 
 #buttonRow a {
-    margin-bottom: 5%;
+    margin-bottom: 1em;
+    box-sizing: border-box;
+    
 }
 
 #buttonRow button {
-    box-sizing: border-box;
     border: 0.15em solid #A76BCE;
     font-size: larger;
-    width: 500px;
+    min-width: 20em;
     height: 3em;
     background-color: #222222;
     color: white;
     border-radius: 10px;
     cursor: pointer;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#buttonRow a {
+    text-decoration: none;
 }
 
 #buttonRow button:hover {

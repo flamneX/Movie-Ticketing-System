@@ -18,16 +18,16 @@
                         <input name="operationType" value="updateInfo" hidden>
                         <input id="userID" name="userID" hidden>
                         <div class="inputField">
+                            <label for="userName">User Name:</label>
                             <input id="userName" name="userName" type="text" placeholder="UserName" maxlength="50" required>
-                            <label for="userName">UserName : </label>
                         </div>
                         <div class="inputField">
+                            <label for="userEmail">E-mail:</label>
                             <input id="userEmail" name="userEmail" type="email" placeholder="E-mail" maxlength="50" required>
-                            <label for="userEmail">E-mail :</label>
                         </div>
                         <div class="inputField">
+                            <label for="userPhoneNo">Phone No.:</label>
                             <input id="userPhoneNo" name="userPhoneNo" type="text" placeholder="Phone No. (e.g. 012-3456789)" maxlength="50" pattern="01[0-9]{1}-[0-9]{7,8}" required>
-                            <label for="userPhoneNo">Phone No. :</label>
                         </div>
                         <div class="errorField">
                             <errorText id="errorText"></errorText>

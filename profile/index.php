@@ -14,16 +14,16 @@
                     <h1>User Profile</h1>
                     <input id="userID" hidden>
                     <div class="inputField">
+                        <label for="userName">User Name:</label>
                         <input id="userName" disabled>
-                        <label for="userName">UserName : </label>
                     </div>
                     <div class="inputField">
+                        <label for="userEmail">E-mail:</label>
                         <input id="userEmail" disabled>
-                        <label for="userEmail">E-mail : </label>
                     </div>
                     <div class="inputField">
+                        <label for="userPhoneNo">Phone No.:</label>
                         <input id="userPhoneNo" disabled>
-                        <label for="userPhoneNo">Phone No. : </label>
                     </div>
                     <div class="errorField">
                         <errorText id="errorText"></errorText>

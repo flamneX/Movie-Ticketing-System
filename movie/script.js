@@ -102,8 +102,8 @@ async function displayUpcomingMovie() {
     container.innerHTML = '';
 
     // Fetch Series
-    const url = `https://api.imdbapi.dev/titles?types=MOVIE&genres=Animation&languageCodes=ja&endYear=`
-      + new Date().getFullYear() + `&sortBy=SORT_BY_RELEASE_DATE&sortOrder=DESC`;
+    const url = `https://api.imdbapi.dev/titles?types=MOVIE&genres=Animation&languageCodes=ja&endYear=`+ 
+      new Date().getFullYear() + `&sortBy=SORT_BY_RELEASE_DATE&sortOrder=DESC`;
     const UPCOMING_SERIES = await fetchMovieArray(url);
     
     for (const movieData of UPCOMING_SERIES) {
