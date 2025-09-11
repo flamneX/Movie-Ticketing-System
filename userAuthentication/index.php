@@ -13,7 +13,7 @@
 
         <!--Body-->
         <main>
-            <div class="container">
+            <div class="container" style="align-items: center">
                 <div class="loginContainer" id="loginContainer">
                     <div class="form-loginContainer sign-up">
                         <form id="signupForm">

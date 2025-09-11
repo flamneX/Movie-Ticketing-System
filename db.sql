@@ -39,9 +39,7 @@ CREATE TABLE IF NOT EXISTS transactions (
 DROP TABLE IF EXISTS ticket;
 CREATE TABLE IF NOT EXISTS ticket (
     ticketID INT AUTO_INCREMENT NOT NULL,
-    userID INT NOT NULL,
     transactionID INT NOT NULL,
     PRIMARY KEY (ticketID),
-    FOREIGN KEY (userID) REFERENCES user(userID),
     FOREIGN KEY (transactionID) REFERENCES transaction(transactionID)
 );

@@ -94,7 +94,7 @@ async function displayCurrentMovie() {
         
         counter++;
 
-        if (counter === 20) {
+        if (counter === 10) {
           container.appendChild(rowDiv);
 
           rowDiv.classList.remove("hidden");
@@ -139,7 +139,7 @@ async function displayUpcomingMovie() {
           <h5><i class="fa-solid fa-language" style="color: #A76BCE; padding-right: 1%"></i> ${movie.spokenLanguages && movie.spokenLanguages.length > 0 ? movie.spokenLanguages[0].name : 'N/A'}</h5>
         </div>
         <div style="display: flex; justify-content: center;">
-          <a href="movie/movie-detail.php?movieID=${movie.id}"><button>BUY TICKET</button><a>
+          <a href="myWishlist/wish-detail.php?movieID=${movie.id}"><button>VIEW INFO</button><a>
         </div>
         `;
         movieDiv.appendChild(movieOverlay);
@@ -148,7 +148,7 @@ async function displayUpcomingMovie() {
         
         counter++;
 
-        if (counter === 20) {
+        if (counter === 10) {
           container.appendChild(rowDiv);
 
           rowDiv.classList.remove("hidden");
