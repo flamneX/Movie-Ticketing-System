@@ -19,7 +19,7 @@
                 <div class="purchaseContainer">
                     <div id="purchaseInfo">
                         <div id="paymentMethod" style="flex: 1">
-                            <form method="POST" action="purchase.php">
+                            <form method="POST" action="purchase.php" onsubmit="return validatePaymentOption()">
                                 <input type="hidden" id="userID" name="userID">
                                 <input type="hidden" id="movieID" name="movieID">
                                 <div>
@@ -32,7 +32,7 @@
                                     <label for="gateway" style="font-weight: bolder; ">Select Payment Method:</label>
                                     <div class="payment-options">
                                         <label class="payment-option">
-                                            <input type="radio" name="gateway" value="paypal" required>
+                                            <input type="radio" name="gateway" value="paypal">
                                             <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/PayPal_Logo2014.png" alt="PayPal">
                                         </label>
 
@@ -51,6 +51,7 @@
                                             <img src="https://images.seeklogo.com/logo-png/53/3/touch-n-go-logo-png_seeklogo-534257.png" alt="TNG">
                                         </label>
                                     </div>
+                                    <div style="color: red; padding-top: 2%" id="optionError"></div>
                                     <div style="padding-top: 10%">
                                         <input class="makePayment" type=submit value="Proceed To Secure Payment">
                                     </div>
