@@ -331,6 +331,11 @@ main {
     transform: scale(1.05);
 }
 
+#movieInfo button {
+    margin: 0.5em 0;
+    box-sizing: border-box;
+}
+
 #moviePlot {
     display: flex;
     flex: auto;

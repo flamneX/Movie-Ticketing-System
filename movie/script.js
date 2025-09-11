@@ -76,7 +76,7 @@ async function displayCurrentMovie() {
           <h5><i class="fa-solid fa-language" style="color: #A76BCE; padding-right: 1%"></i> ${movie.spokenLanguages && movie.spokenLanguages.length > 0 ? movie.spokenLanguages[0].name : 'N/A'}</h5>
         </div>
         <div style="display: flex; justify-content: center;">
-          <a href="movie-detail.php?movieID=${movie.id}"><button>BUY TICKET</button><a>
+          <a href="movie-detail.php?movieID=${movie.id}"><button>VIEW INFO</button><a>
         </div>
         `;
         movieDiv.appendChild(movieOverlay);
@@ -164,8 +164,38 @@ async function displayDetails(imdbId) {
       <h5><i class="fa-solid fa-clock"></i> ${movie.runtimeSeconds ? Math.floor(movie.runtimeSeconds / 60) : 'N/A'} mins</h5>
       <h5><i class="fa-solid fa-language"></i> ${movie.spokenLanguages?.[0]?.name || 'N/A'}</h5>
     </div>
+    <button id="wishButton" class="detailButton"></button>
     <button id="buyButton" class="detailButton"></button>
   `;
+
+  const wishButton = document.getElementById("wishButton");
+  if (loggedUser == null) {
+    wishButton.textContent = "LOG IN TO WISHLIST";
+    wishButton.onclick = () => {
+      window.location.href = `/Movie-Ticketing-System/userAuthentication/index.php?movieID=${imdbId}`;
+    };
+  } 
+  else {
+    const wishlisted = await isWishlisted(imdbId);
+    if (wishlisted) {
+      wishButton.textContent = "REMOVE FROM WISHLIST";
+      wishButton.onclick = async () => {
+        wishButton.textContent = "ADD TO WISHLIST";
+        const success = await removeWishlist(imdbId);
+        if(success) {
+          location.reload();
+        }
+      };
+    } else {
+      wishButton.textContent = "ADD TO WISHLIST";
+      wishButton.onclick = async () => {
+        const success = await addWishlist(imdbId);
+        if(success) {
+          location.reload();
+        }
+      };
+    }
+  }
 
   const buyButton = document.getElementById("buyButton");
   if (loggedUser == null) {
@@ -227,4 +257,35 @@ async function handleButtonClick(asyncMethod) {
     } finally {
         buttons.forEach(b => b.disabled = false);
     }
+}
+
+async function isWishlisted(imdbId) {
+  const userID = sessionStorage.getItem("loggedUserID");
+
+  const response = await fetch(`isWishlisted.php?userID=${userID}&movieID=${imdbId}`);
+  const data = await response.json();
+
+  return data.length > 0;
+}
+
+async function addWishlist(imdbId) {
+  const userID = sessionStorage.getItem("loggedUserID");
+  const response = await fetch('addWishlist.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `userID=${encodeURIComponent(userID)}&movieID=${encodeURIComponent(imdbId)}`
+  });
+  const result = await response.json();
+  return result.success;
+}
+
+async function removeWishlist(imdbId) {
+  const userID = sessionStorage.getItem("loggedUserID");
+  const response = await fetch('removeWishlist.php', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: `userID=${encodeURIComponent(userID)}&movieID=${encodeURIComponent(imdbId)}`
+  });
+  const result = await response.json();
+  return result.success;
 }
