@@ -126,11 +126,13 @@ function createWikiLinks(container, items) {
   });
 }
 
-async function displayWishlist() {
+async function displayUpcomingWishlist() {
   const container = document.getElementById("movieContainer");
+  container.innerHTML = '';
   const userID = sessionStorage.getItem("loggedUserID");
   
-  const response = await fetch(`getWishlist.php?userID=${userID}`);
+
+  const response = await fetch(`getUpcomingWishlist.php?userID=${userID}`);
   const data = await response.json();
   
   if (data.length === 0) {
@@ -170,6 +172,52 @@ async function displayWishlist() {
   });
 }
 
+async function displayCurrentWishlist() {
+  const container = document.getElementById("movieContainer");
+  container.innerHTML = '';
+  const userID = sessionStorage.getItem("loggedUserID");
+  
+
+  const response = await fetch(`getCurrentWishlist.php?userID=${userID}`);
+  const data = await response.json();
+  
+  if (data.length === 0) {
+      container.innerHTML = "<h3>No Item(s) Found.</h3>";
+      return;
+  }
+  
+  const movieDetails = await Promise.all(
+      data.map(wishlist => fetchMovieDetail(wishlist.movieID))
+  );
+  
+  data.map((wishlist, i) => {
+    const movie = movieDetails[i];
+
+    const card = document.createElement('div');
+    card.className = "wishlist-card";
+
+    const movieDiv = document.createElement("div");
+    movieDiv.className = "movie-card";
+    movieDiv.innerHTML = `<img src="${movie.primaryImage.url}" alt="${movie.originalTitle}">`;
+  
+    const movieOverlay = document.createElement("div");
+    movieOverlay.className = "movie-overlay"
+    movieOverlay.innerHTML = `
+    <div style="height: 365px">
+      <h3>${movie.primaryTitle}</h3>
+      <h5><i class="fa-solid fa-tag" style="color: #A76BCE; padding-right: 1%"></i> ${movie.genres?.slice(0,3).join(', ') || 'N/A'}</h5>
+      <h5><i class="fa-solid fa-language" style="color: #A76BCE; padding-right: 1%"></i> ${movie.spokenLanguages && movie.spokenLanguages.length > 0 ? movie.spokenLanguages[0].name : 'N/A'}</h5>
+    </div>
+    <div style="display: flex; justify-content: center;">
+      <a href="../movie/movie-detail.php?movieID=${movie.id}"><button>VIEW INFO</button><a>
+    </div>
+    `;
+    movieDiv.appendChild(movieOverlay);
+    card.appendChild(movieDiv);
+    container.appendChild(card);
+  });
+}
+
 async function isWishlisted(imdbId) {
   const userID = sessionStorage.getItem("loggedUserID");
 
@@ -199,4 +247,29 @@ async function removeWishlist(imdbId) {
   });
   const result = await response.json();
   return result.success;
+}
+
+// Button Toggle
+let currentBtn = document.getElementById("currentBtn");
+let upcomingBtn = document.getElementById("upcomingBtn");
+
+async function handleButtonClick(asyncMethod) {
+  if (asyncMethod == displayUpcomingWishlist) {
+    upcomingBtn.classList.add("active");
+    currentBtn.classList.remove("active");
+  } 
+  else {
+    currentBtn.classList.add("active");
+    upcomingBtn.classList.remove("active");
+  }
+
+  // Disable both buttons
+  const buttons = document.querySelectorAll('.selectButton');
+  buttons.forEach(b => b.disabled = true);
+  try {
+      await asyncMethod();
+  } 
+  finally {
+      buttons.forEach(b => b.disabled = false);
+  }
 }

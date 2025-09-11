@@ -94,7 +94,7 @@ async function displayCurrentMovie() {
         
         counter++;
 
-        if (counter === 10) {
+        if (counter === 20) {
           container.appendChild(rowDiv);
 
           rowDiv.classList.remove("hidden");
@@ -148,7 +148,7 @@ async function displayUpcomingMovie() {
         
         counter++;
 
-        if (counter === 10) {
+        if (counter === 20) {
           container.appendChild(rowDiv);
 
           rowDiv.classList.remove("hidden");
