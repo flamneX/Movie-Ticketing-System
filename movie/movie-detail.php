@@ -6,10 +6,12 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
     <body>
+        <!--Header-->
         <?php
             include("../include/header.php");
         ?>
 
+        <!--Body-->
         <main>
             <div class="container">
                 <div class="titleHeader">
@@ -20,7 +22,7 @@
                     <div id="movieInfo"></div>
                     <div id="moviePlot">
                         <h3><i class="fa-solid fa-video"></i> Preview</h3>
-                        <div id="vid" class="foreground" style="background-color: none; display: flex; justify-content: center;"></div>
+                        <div id="vid" class="foreground"></div>
                         <h3><i class="fa-solid fa-circle-info"></i> Synopsis</h3>
                         <div id="syn" class="foreground"></div>
                         <h3><i class="fa-solid fa-star"></i> Cast</h3>
@@ -34,6 +36,7 @@
             </div>
         </main>
 
+        <!--Footer-->
         <?php
             include("../include/footer.php");
         ?>

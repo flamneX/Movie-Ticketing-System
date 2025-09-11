@@ -3,6 +3,7 @@
     <head>
         <title>Absolute Cinema</title>
         <link rel="stylesheet" href="../styles.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
     <body onload="displayTransactions()">
         <!--Header-->
@@ -16,7 +17,7 @@
                 <div class="containerHeader">
                     <h1>My Tickets</h1>
                 </div>
-                <div id="myTickets"></div>
+                <div id="movieContainer"></div>
             </div>
         </main>
         

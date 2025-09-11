@@ -7,12 +7,13 @@ html {
 
 .foreground {
     display: flex;
-    border-left: #222222;
-    border-left-width: 10px;
-    border-left-style: solid;
-    padding: 1% 1% 1% 2%;
+    flex: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-left: 10px solid #222222;
+    padding: 1% 1% 1% 1.5%;
     border-radius: 10px;
-    background-image: linear-gradient(to bottom right, #A76BCE, #9b53e3);
+    background-color: #9b53e3;
     color: black;
     font-weight: 500;
     box-shadow: 0 0 1em rgb(0, 0, 0, 0.35);
@@ -21,6 +22,7 @@ html {
 /*Styling for document body*/
 body {
     display: flex;
+    flex: auto;
     flex-direction: column;
     min-height: 100%;
     height: 100%;
@@ -44,7 +46,7 @@ main {
     flex-wrap: wrap;
     min-width: 100%;
     box-sizing: border-box;
-    padding: 0 10%;
+    padding: 0 5%;
     padding-bottom: 5%;
 }
 
@@ -90,7 +92,7 @@ main {
 /*Styling for page navigation*/
 .topNavigation {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -167,7 +169,6 @@ main {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    min-width: 100%;
 }
 
 .movie-card {
@@ -206,6 +207,29 @@ main {
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 0 1em rgb(0, 0, 0, 0.5);
+}
+
+.wishlist-card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border-left: 20px solid #222222;
+    border-radius: 10px;
+    background-color: #9b53e3;
+    color: black;
+    font-weight: 500;
+    box-shadow: 0 0 1em rgb(0, 0, 0, 0.35);
+    width: min-content;
+    height: min-content;
+    margin: 1em;
+}
+
+.wishlist-card:hover {
+    transform: scale(1.05);
+}
+
+.wishlist-card .movie-card:hover {
+    transform: scale(1.00);
 }
 
 .movie-overlay {
@@ -283,6 +307,7 @@ main {
 #movieDetail {
     width: 300px;
     color: #ffffff;
+    padding: 5% 10px;
 }
 
 #movieDetail h5 {
@@ -308,14 +333,18 @@ main {
     display: flex;
     flex: auto;
     flex-direction: column;
-    position: relative;
-    max-width: 75%;
+    padding: 0 5%;
     min-width: 75%;
+    width: min-content;
+    height: min-content;
     box-sizing: border-box;
 }
 
 #moviePreview {
     display: flex;
+    flex: auto;
+    min-width: 250px;
+    aspect-ratio: 16/9;
 }
 
 #moviePlot div a {
@@ -328,7 +357,7 @@ main {
     text-decoration: underline;
 }
 
-#buyButton {
+.detailButton {
     border: 0.15em solid #A76BCE;
     font-size: larger;
     width: 10em;
@@ -339,26 +368,17 @@ main {
     transition: box-shadow 0.4s ease;
 }
 
-#buyButton:hover {
-    box-shadow: 1em 0 2em #a719ff, -1em 0 2em #4d0a8f;
-}
-
-#wishButton {
-    border: 0.15em solid #A76BCE;
-    font-size: larger;
-    width: 10em;
-    height: 3em;
-    background-color: #333333;
-    color: white;
-    border-radius: 10px;
-    transition: box-shadow 0.4s ease;
-}
-
-#wishButton:hover {
+.detailButton:hover {
     box-shadow: 1em 0 2em #a719ff, -1em 0 2em #4d0a8f;
 }
 
 /*Styling for purchase page*/
+.ticketDetail {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
 #ticketAmount {
     width: 7%;
     text-align: center;
@@ -426,38 +446,30 @@ main {
 
 .purchaseContainer {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-width: 100%;
+}
+
+#purchaseInfo {
+    display: flex;
+    flex: auto;
     flex-direction: column;
+    justify-items: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1em 0;
+    min-width: 30%;
+    width: min-content;
+    height: min-content;
     background-color: #222222;
+    color: #ffffff;
     border-radius: 30px;
-    box-shadow: 0 0 1em rgba(0, 0, 0, 0.35);
-    overflow: hidden;
-    min-width: 800px;
-    max-width: 100%;
-    min-height: 800px;
-    margin-top: 5%;
+    box-shadow: 0 0 1em rgb(0, 0, 0, 0.35);
 }
 
 .purchaseContainer h1 {
     color: #ffffff;
-}
-
-#paymentButton {
-    border: 0.15em solid white;
-    font-size: larger;
-    width: 8em;
-    height: 3em;
-    background-color: #7F00FF;
-    color: white;
-    border-radius: 10px;
-    transition: box-shadow 0.4s ease;
-}
-
-#paymentButton:hover {
-    box-shadow: 1em 0 2em #A76BCE, -1em 0 2em #7F00FF;    color: #A76BCE;
-    color: white;
-    border-color: #A76BCE;
 }
 
 #paymentInfo img {
@@ -489,18 +501,88 @@ main {
     box-shadow: 1em 0 2em #a719ff, -1em 0 2em #4d0a8f;
 }
 
-/*Styling for my ticket page*/
-.foreground img {
-    width: 200px;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 8px;
-    transition: transform 0.2s ease-in;
+.gatewayContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+#gatewayInfo {
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 1em 1em;
+    background-color: #222222;
+    color: #ffffff;
+    border-radius: 30px;
     box-shadow: 0 0 1em rgb(0, 0, 0, 0.35);
 }
 
-.foreground img:hover {
+
+#paymentButton {
+    border: 0.15em solid #9b53e3;
+    font-size: larger;
+    width: 8em;
+    height: 3em;
+    background-color: #333333;
+    color: white;
+    border-radius: 10px;
+    transition: box-shadow 0.4s ease;
+}
+
+#paymentButton:hover {
+    box-shadow: 1em 0 2em #A76BCE, -1em 0 2em #7F00FF;
+}
+
+/*Styling for my ticket page*/
+#ticketContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.ticket-card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #9b53e3;
+    color: black;
+    font-weight: 500;
+    box-shadow: 0 0 1em rgb(0, 0, 0, 0.35);
+    width: min-content;
+    height: min-content;
+}
+
+.ticketTransaction{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #222222;
+    width: min-content;
+    margin: 1em;
+}
+
+.ticketTransaction .ticketH5 {
+    color: #ffffff;
+    font-size: x-large;
+    margin: 0.5em;
+}
+
+.ticketTransaction:hover {
     transform: scale(1.05);
+}
+
+.ticketTransaction:hover .movie-card:hover{
+    transform: scale(1.00);
 }
 
 .ticketDetail {
@@ -527,6 +609,24 @@ main {
     box-shadow: 1em 0 2em #a719ff, -1em 0 2em #4d0a8f;
 }
 
+.ticketInfo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: min-content;
+    border-left: 10px solid #222222;
+    padding: 1% 1% 1% 1.5%;
+    border-radius: 10px;
+    background-color: #9b53e3;
+    color: black;
+    font-weight: 500;
+    box-shadow: 0 0 1em rgb(0, 0, 0, 0.35);
+    margin: 1em;
+    box-sizing: border-box;
+}
+
+/*Contact For Formatting*/
 .contact-container {
     display: flex;
     justify-content: space-between;
@@ -957,6 +1057,7 @@ main {
 .movie-card:hover {
     transform: scale(1.05);
 }
+
 /* Movie Poster */
 .Mmovie-card img {
     width: 100%;

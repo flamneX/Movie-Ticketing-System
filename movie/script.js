@@ -174,7 +174,7 @@ async function displayDetails(imdbId) {
       <h5><i class="fa-solid fa-clock"></i> ${movie.runtimeSeconds ? Math.floor(movie.runtimeSeconds / 60) : 'N/A'} mins</h5>
       <h5><i class="fa-solid fa-language"></i> ${movie.spokenLanguages?.[0]?.name || 'N/A'}</h5>
     </div>
-    <button id="buyButton"></button>
+    <button id="buyButton" class="detailButton"></button>
   `;
 
   const buyButton = document.getElementById("buyButton");
@@ -191,7 +191,8 @@ async function displayDetails(imdbId) {
 
   const synopsis = document.getElementById("syn");
   synopsis.textContent = movie.plot || "No synopsis available.";
-
+  
+  createWikiLinks(document.getElementById("cas"), movie.stars);
   createWikiLinks(document.getElementById("dir"), movie.directors);
   createWikiLinks(document.getElementById("wri"), movie.writers);
 }
@@ -220,7 +221,7 @@ function createWikiLinks(container, items) {
 
 async function handleButtonClick(asyncMethod) {
     // Disable both buttons
-    const buttons = document.querySelectorAll('button');
+    const buttons = document.querySelectorAll('.selectButton');
     buttons.forEach(b => b.disabled = true);
 
     try {
