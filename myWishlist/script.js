@@ -128,7 +128,7 @@ function createWikiLinks(container, items) {
 
 async function displayWishlist() {
   const container = document.getElementById("movieContainer");
-  const userID = localStorage.getItem("loggedUserID");
+  const userID = sessionStorage.getItem("loggedUserID");
   
   const response = await fetch(`getWishlist.php?userID=${userID}`);
   const data = await response.json();
@@ -171,7 +171,7 @@ async function displayWishlist() {
 }
 
 async function isWishlisted(imdbId) {
-  const userID = localStorage.getItem("loggedUserID");
+  const userID = sessionStorage.getItem("loggedUserID");
 
   const response = await fetch(`isWishlisted.php?userID=${userID}&movieID=${imdbId}`);
   const data = await response.json();
@@ -180,7 +180,7 @@ async function isWishlisted(imdbId) {
 }
 
 async function addWishlist(imdbId) {
-  const userID = localStorage.getItem("loggedUserID");
+  const userID = sessionStorage.getItem("loggedUserID");
   const response = await fetch('addWishlist.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -191,7 +191,7 @@ async function addWishlist(imdbId) {
 }
 
 async function removeWishlist(imdbId) {
-  const userID = localStorage.getItem("loggedUserID");
+  const userID = sessionStorage.getItem("loggedUserID");
   const response = await fetch('removeWishlist.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

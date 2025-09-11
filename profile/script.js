@@ -1,6 +1,6 @@
 // Log Out From Current User
 function logout() {
-    localStorage.removeItem("loggedUserID");
+    sessionStorage.removeItem("loggedUserID");
     window.location.href = "../userAuthentication/";
 }
 
@@ -11,7 +11,7 @@ function back() {
 
 // Fetch User
 function fetchUser() {
-    let userID = localStorage.getItem("loggedUserID");
+    let userID = sessionStorage.getItem("loggedUserID");
     fetch('dbFunction.php', {
         method: 'POST',
         headers: {
@@ -67,7 +67,7 @@ function setUpdateForm() {
 
 // Update User Password
 function setPasswordForm() {
-    document.getElementById('userID').value = localStorage.getItem("loggedUserID");
+    document.getElementById('userID').value = sessionStorage.getItem("loggedUserID");
     document.getElementById('passwordForm').addEventListener('submit', async function(event) {
         event.preventDefault(); // Prevent default form submission
 

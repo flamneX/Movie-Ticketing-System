@@ -40,8 +40,10 @@
 
             <div class="container">
                 <h1 style="margin: 0;">Home</h1>
-                <h3>Current Movie Showcase</h3>
-                <button class="detailButton" onclick="window.location.href='movie/'">View All</button>
+                <div class="homeInfo">
+                    <h3>Current Movie Showcase</h3>
+                    <button class="detailButton" onclick="window.location.href='movie/'">View All</button>
+                </div>
                 <div class="home-movie-row-wrapper" style="border-radius: 15px; background-color: #222222;">
                     <button class="arrow left" onclick=scrollCurrentMovies(-1)>&#10094;</button>
                     <div class="home-movie-row-wrapper" style="padding: 3%; width:94%" id="currentMovieContainer"></div>
@@ -51,8 +53,10 @@
                 <br>
                 <br>
 
-                <h3>Upcoming Movie Showcase</h3>
-                <button class="detailButton" onclick="window.location.href='movie/?state=upcoming'">View All</button>
+                <div class="homeInfo">
+                    <h3>Upcoming Movie Showcase</h3>
+                    <button class="detailButton" onclick="window.location.href='movie/?state=upcoming'">View All</button>
+                </div>
                 <div class="home-movie-row-wrapper" style="border-radius: 15px; background-color: #222222">
                     <button class="arrow left" onclick=scrollUpcomingMovies(-1)>&#10094;</button>
                     <div class="home-movie-row-wrapper" style="padding: 3%; width:94%" id="upcomingMovieContainer"></div>

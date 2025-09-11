@@ -9,7 +9,7 @@
 </nav>
 
 <script>
-    let loggedUser = localStorage.getItem("loggedUserID");
+    let loggedUser = sessionStorage.getItem("loggedUserID");
     let wishlistBtn = document.getElementById('myWishlist');
     let ticketBtn = document.getElementById('myTicket');
 

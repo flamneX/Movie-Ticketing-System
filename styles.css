@@ -795,6 +795,10 @@ main {
     border-color: none;
 }
 
+.loginContainer button:hover {
+    box-shadow: 0 0 2em #9d00ff;
+}
+
 .loginContainer form {
     background-color: #222222;
     color: #ffffff;
@@ -1033,6 +1037,10 @@ main {
     box-sizing: border-box;
 }
 
+#buttonRow button:hover {
+    box-shadow: 0 0 2em #9d00ff;
+}
+
 #buttonRow a {
     text-decoration: none;
 }
@@ -1042,7 +1050,12 @@ main {
 }
 
 #buttonRow #logout {
+    border-color: #ad1919;
     color: #ad1919;
+}
+
+#buttonRow #logout:hover {
+    box-shadow: 0 0 2em #ad1919;
 }
 
 #buttonRow #logout:hover {
@@ -1057,6 +1070,14 @@ main {
     overflow-x: hidden;
     scroll-snap-type: x mandatory;
     padding: 1.5% 0;
+}
+
+.homeInfo {
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 /* Movie Card */

@@ -25,7 +25,7 @@ document.getElementById('signinForm').addEventListener('submit', async function(
     .then(response => response.json())
     .then(data => {
         if (data !== null) {
-            localStorage.setItem('loggedUserID', data);
+            sessionStorage.setItem('loggedUserID', data);
             window.location.href = '../';
         }
         else {
@@ -50,7 +50,7 @@ document.getElementById('signupForm').addEventListener('submit', async function(
     })
     .then(response => response.json())
     .then(data => {
-        localStorage.setItem('loggedUserID', data);
+        sessionStorage.setItem('loggedUserID', data);
         window.location.href = '../';
         window.alert("Account Registered Successfully");
     })

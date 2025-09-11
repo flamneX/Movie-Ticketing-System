@@ -76,7 +76,7 @@
         <script src="script.js"></script>
         <script>
             document.addEventListener("DOMContentLoaded", () => {
-                const userID = localStorage.getItem("loggedUserID");
+                const userID = sessionStorage.getItem("loggedUserID");
                 if (userID) {
                     document.getElementById("userID").value = userID;
                 }

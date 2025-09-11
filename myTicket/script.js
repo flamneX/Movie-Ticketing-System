@@ -15,7 +15,7 @@ async function fetchMovieDetail(imdbId) {
 
 async function displayTransactions() {
     const container = document.getElementById("movieContainer");
-    const userID = localStorage.getItem("loggedUserID");
+    const userID = sessionStorage.getItem("loggedUserID");
 
     const response = await fetch(`getTransactions.php?userID=${userID}`);
     const data = await response.json();
