@@ -10,10 +10,12 @@
         </style>
     </head>
     <body>
+        <!--Header-->
         <?php
             include("../include/header.php");
         ?>
 
+        <!--Body-->
         <main>
             <h2>Hey there! Thanks for choosing <strong>Absolute Cinema</strong>!</h2>
             <p>Before you book that ticket for your next cinematic adventure, please take a quick read through our terms and conditions. Don’t worry, we’ll keep it light!</p>
@@ -71,6 +73,7 @@
             <p class="important">By using Absolute Cinema, you agree to these terms. Now go ahead, book that ticket, and get ready for the show!</p>
         </main>
 
+        <!--Footer-->   
         <?php
             include("../include/footer.php");
         ?>

@@ -10,10 +10,12 @@
         </style>
     </head>
     <body>
+        <!--Header-->
         <?php
             include("../include/header.php");
         ?>
 
+        <!--Body-->
         <main>
             <h1>Personal Data Notice</h1>
             <p>At <strong>Absolute Cinema</strong>, we value your privacy and are committed to protecting your personal information. Below is an overview of how we collect, use, and safeguard your personal data when you use our website.</p>
@@ -71,6 +73,7 @@
             <p><em>Last updated: August 2025</em></p>
         </main>
 
+        <!--Footer-->
         <?php
             include("../include/footer.php");
         ?>

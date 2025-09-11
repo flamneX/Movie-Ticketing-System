@@ -12,25 +12,22 @@
 
         <main>
             <div class="container">
-                <h1>Movie Details</h1>
-                <div id="title"></div>
-                <div style="display: flex;">
-                    <div style="flex: 1; padding-right: 3%">
-                        <div id="movieInfo"></div>
-                        <div style="display: flex; justify-content: center">
-                            <button id="buyButton"></button>
-                        </div>
-                    </div>
-                    <div id="moviePlot" style="flex: 3;">
-                        <h3><i class="fa-solid fa-video" style="padding-right: 1%;"></i>Preview</h3>
+                <div class="titleHeader">
+                    <h1>Movie Details</h1>
+                    <div id="title"></div>
+                </div>
+                <div class="movieInfoContainer">
+                    <div id="movieInfo"></div>
+                    <div id="moviePlot">
+                        <h3><i class="fa-solid fa-video"></i>Preview</h3>
                         <div id="vid" class="foreground" style="background-color: none; display: flex; justify-content: center;"></div>
                         <h3><i class="fa-solid fa-circle-info" style="padding-right: 1%;"></i>Synopsis</h3>
                         <div id="syn" class="foreground"></div>
-                        <h3><i class="fa-solid fa-star" style="padding-right: 1%"></i>Cast</h3>
+                        <h3><i class="fa-solid fa-star"></i>Cast</h3>
                         <div id="cas" class="foreground"></div>
-                        <h3><i class="fa-solid fa-film" style="padding-right: 1%;"></i>Directors</h3>
+                        <h3><i class="fa-solid fa-film"></i>Directors</h3>
                         <div id="dir" class="foreground"></div>
-                        <h3><i class="fa-solid fa-pen-fancy" style="padding-right: 1%;"></i>Writers</h3>
+                        <h3><i class="fa-solid fa-pen-fancy"></i>Writers</h3>
                         <div id="wri" class="foreground"></div>
                     </div>
                 </div>

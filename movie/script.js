@@ -146,9 +146,8 @@ async function displayPreview(imdbId) {
     container.innerHTML = "Video Preview Not Available";
   } else {
     container.innerHTML = `
-      <iframe 
-        width="640" 
-        height="360" 
+      <iframe   
+        id="moviePreview" 
         src="https://www.imdb.com/video/imdb/${video.videos[0].id}/imdb/embed"
         frameborder="0" 
         allowfullscreen>
@@ -170,9 +169,12 @@ async function displayDetails(imdbId) {
 
   containerLeft.innerHTML = `
     <img src="${movie.primaryImage.url}" alt="${movie.originalTitle}">
-    <h5><i class="fa-solid fa-tag" style="padding-right: 1%"></i> ${movie.genres?.join(', ') || 'N/A'}</h5>
-    <h5><i class="fa-solid fa-clock" style="padding-right: 1%"></i> ${movie.runtimeSeconds ? Math.floor(movie.runtimeSeconds / 60) : '727'} mins</h5>
-    <h5><i class="fa-solid fa-language" style="padding-right: 1%"></i> ${movie.spokenLanguages?.[0]?.name || 'N/A'}</h5>
+    <div id="movieDetail">
+      <h5><i class="fa-solid fa-tag"></i> ${movie.genres?.join(', ') || 'N/A'}</h5>
+      <h5><i class="fa-solid fa-clock"></i> ${movie.runtimeSeconds ? Math.floor(movie.runtimeSeconds / 60) : '727'} mins</h5>
+      <h5><i class="fa-solid fa-language"></i> ${movie.spokenLanguages?.[0]?.name || 'N/A'}</h5>
+    </div>
+    <button id="buyButton">Buy Ticket</button>
   `;
 
   const synopsis = document.getElementById("syn");
