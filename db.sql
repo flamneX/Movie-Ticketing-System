@@ -16,8 +16,16 @@ CREATE TABLE IF NOT EXISTS user (
 );
 
 -- Creating the whishlist table
-DROP TABLE IF EXISTS wishlist;
-CREATE TABLE IF NOT EXISTS wishlist (
+DROP TABLE IF EXISTS upcomingWishlist;
+CREATE TABLE IF NOT EXISTS upcomingWishlist (
+    userID INT NOT NULL,
+    movieID VARCHAR(50) NOT NULL,
+    PRIMARY KEY (userID, movieID),
+    FOREIGN KEY (userID) REFERENCES user(userID)
+);
+
+DROP TABLE IF EXISTS currentWishlist;
+CREATE TABLE IF NOT EXISTS currentWishlist (
     userID INT NOT NULL,
     movieID VARCHAR(50) NOT NULL,
     PRIMARY KEY (userID, movieID),
