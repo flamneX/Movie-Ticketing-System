@@ -2,16 +2,6 @@
 let currentBtn = document.getElementById("currentBtn");
 let upcomingBtn = document.getElementById("upcomingBtn");
 
-currentBtn.addEventListener('click', () => {
-  currentBtn.classList.add("active");
-  upcomingBtn.classList.remove("active");
-});
-
-upcomingBtn.addEventListener('click', () => {
-  upcomingBtn.classList.add("active");
-  currentBtn.classList.remove("active");
-})
-
 // fetch movie detail json using IMDB ID
 async function fetchMovieDetail(imdbId) {
     try {
@@ -220,6 +210,14 @@ function createWikiLinks(container, items) {
 }
 
 async function handleButtonClick(asyncMethod) {
+    if (asyncMethod == displayUpcomingMovie) {
+      upcomingBtn.classList.add("active");
+      currentBtn.classList.remove("active");
+    } else {
+      currentBtn.classList.add("active");
+      upcomingBtn.classList.remove("active");
+    }
+
     // Disable both buttons
     const buttons = document.querySelectorAll('.selectButton');
     buttons.forEach(b => b.disabled = true);
