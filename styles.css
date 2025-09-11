@@ -739,19 +739,24 @@ main {
 
 /* Styling for Login Form*/
 .loginContainer {
+    display: flex;
+    flex: auto;
+    position: relative;
     background-color: #222222;
     border-radius: 30px;
     box-shadow: 0 0 1em rgba(0, 0, 0, 0.35);
     overflow: hidden;
-    position: relative;
-    min-width: 800px;
+    min-width: 300px;
     max-width: 100%;
     min-height: 500px;
+    max-height: 100%;
+    aspect-ratio: 2/1;
     margin-top: 5%;
 }
 
 .loginContainer p {
-    font-size: 18px;
+    font-size: medium;
+    font-weight: 600;
     line-height: 20px;
     letter-spacing: 0.3px;
     margin: 5% 0 5% 0;
@@ -760,30 +765,29 @@ main {
 .loginContainer errorText {
     color: #ff0000;
     font-weight: 1000;
-    font-size: 19px;
+    font-size: large;
 }
 
 .loginContainer span {
-    font-size: 15px;
+    font-size: medium;
 }
 
 .loginContainer button {
     background-color: #7F00FF;
     color: #ffffff;
     font-size: smaller;
-    border-style: none;
-    border-radius: 0;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
     font-weight: 600;
-    letter-spacing: 0.5px;
     text-transform: uppercase;
-    margin-top: 3%;
+    margin: 5%;
     cursor: pointer;
-    padding: 10px 10px
+    padding: 1em 1em;
 }
 
 .loginContainer button.hidden {
     background-color: transparent;
-    border-color: #222222;
+    border-color: none;
 }
 
 .loginContainer form {
@@ -793,7 +797,7 @@ main {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0 40px;
+    padding: 0 2em;
     height: 100%;
 }
 
@@ -801,10 +805,10 @@ main {
     background-color: #dddddd;
     border-style: none;
     border-left: 5px solid #a719ff;
-    border-radius: 4px 0 0 4px;
-    margin: 10px;
-    padding: 15px 20px;
-    font-size: 16px;
+    border-radius: 10px 0 0 10px;
+    margin: 0.5em 0;
+    padding: 1.2em 1em;
+    font-size: small;
     width: 100%;
     outline: none;
 }
@@ -854,7 +858,7 @@ main {
 }
 
 .toggle-loginContainer {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 50%;
     width: 50%;
@@ -924,11 +928,12 @@ main {
 /* Styling for User Profile*/
 .profileContainer {
     display: flex;
+    flex: auto;
     flex-direction: column;
     align-items: center;
-    min-width: 800px;
+    min-width: 300px;
     max-width: 100%;
-    min-height: 400px;
+    min-height: 500px;
     background-color: #222222;
     color: #ffffff;
     border-radius: 50px;
