@@ -44,7 +44,7 @@
                                 <tr>
                                     <td><label for="message">Your Message:</label></td>
                                     <td>
-                                        <textarea id="message" name="message" class="form-textarea" maxlength="50" placeholder="300 CHARACTER LIMIT"></textarea>
+                                        <textarea id="message" name="message" class="form-textarea" maxlength="300" placeholder="300 CHARACTER LIMIT" style="resize:none"></textarea>
                                     </td>
                                 </tr>
 
