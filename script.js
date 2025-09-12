@@ -39,13 +39,15 @@ function displayBanner() {
 
     const bannerFiles = ["banner1.png", "banner2.png", "banner3.png", "banner4.png"];
 
-    for (let i = 0; i < bannerFiles.length; i++) {
-      let banner = document.createElement("img");
-      banner.src = `images/banners/${bannerFiles[i]}`;
-      banner.alt = bannerFiles[i];
-      banner.style = "max-height: 20em; object-fit: cover";
-      rowDiv.appendChild(banner);
-    }    
+    for (let i = 0; i < 2; i++) {
+      for (let j = 0; j < bannerFiles.length; j++) {
+        let banner = document.createElement("img");
+        banner.src = `images/banners/${bannerFiles[j]}`;
+        banner.alt = bannerFiles[i];
+        banner.style = "max-height: 20em; object-fit: cover";
+        rowDiv.appendChild(banner);
+      }
+    }
 
     container.appendChild(rowDiv);
 }
@@ -56,8 +58,8 @@ async function displayCurrentMovie() {
     
     let counter = 0;
     let rowDiv = document.createElement("div");
-    rowDiv.className = "home-movie-row";
-    rowDiv.id = "current-home-movie-row";
+    rowDiv.className = "movie-card-row";
+    rowDiv.id = "current-movie-card-row";
     rowDiv.classList.add("hidden");
 
     let url = `https://api.imdbapi.dev/titles?types=MOVIE&genres=Animation&languageCodes=ja&endYear=`
@@ -110,8 +112,8 @@ async function displayUpcomingMovie() {
     
     let counter = 0;
     let rowDiv = document.createElement("div");
-    rowDiv.className = "home-movie-row";
-    rowDiv.id = "upcoming-home-movie-row";
+    rowDiv.className = "movie-card-row";
+    rowDiv.id = "upcoming-movie-card-row";
     rowDiv.classList.add("hidden");
 
     let url = `https://api.imdbapi.dev/titles?types=MOVIE&genres=Animation&languageCodes=ja&endYear=`
@@ -167,13 +169,13 @@ async function displayUpcomingMovie() {
 }
 
 function scrollCurrentMovies(direction) {
-    const row = document.querySelector("#current-home-movie-row");
+    const row = document.querySelector("#current-movie-card-row");
     if (!row) return;
     row.scrollBy({ left: 300 * direction * 2, behavior: "smooth" });
 }
 
 function scrollUpcomingMovies(direction) {
-    const row = document.querySelector("#upcoming-home-movie-row");
+    const row = document.querySelector("#upcoming-movie-card-row");
     if (!row) return;
     row.scrollBy({ left: 300 * direction * 2, behavior: "smooth" });
 }

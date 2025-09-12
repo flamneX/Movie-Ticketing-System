@@ -1074,6 +1074,17 @@ main {
 .home-movie-row {
     display: flex;
     gap: 20px;
+    scroll-snap-type: x mandatory;
+    padding: 1.5% 0;
+    box-sizing: border-box;
+    will-change: transform;
+    animation: scrolling 30s linear infinite;
+}
+
+.movie-card-row {
+    display: flex;
+    flex: 0 0 100%;
+    gap: 20px;
     overflow-x: hidden;
     scroll-snap-type: x mandatory;
     padding: 1.5% 0;
@@ -1107,9 +1118,20 @@ main {
 /* Movie Poster */
 .home-movie-row-wrapper {
     width: 100%;
+    overflow: hidden;
     position: relative;
     display: flex;
+    flex-direction: row;
     align-items: center;
+}
+
+@keyframes scrolling {
+    0% {
+        transform: translateX(0); 
+    }
+	100% { 
+        transform: translateX(calc(-100%/2));
+    }
 }
 
 /* Arrows under HomePage movie showtime*/

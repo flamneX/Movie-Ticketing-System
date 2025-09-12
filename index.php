@@ -79,7 +79,6 @@
         <script>
             window.onload = async () => {
                 displayBanner();
-                startBannerInterval();
                 await displayCurrentMovie();
                 await displayUpcomingMovie();
             }
