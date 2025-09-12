@@ -57,9 +57,10 @@
             </div>
         </main>
 
-        <script src="script.js"></script>
+        <!--Footer-->
         <?php
             include("../include/footer.php");
         ?>
+        <script src="script.js"></script>
     </body>
 </html>

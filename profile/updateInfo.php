@@ -10,6 +10,7 @@
             include("../include/header.php");
         ?>
 
+        <!--Body-->
         <main>
             <div class="container">
                 <div class="profileContainer">
@@ -40,6 +41,8 @@
                 </div>
             </div>
         </main>
+
+        <!--Footer-->
         <?php
             include("../include/footer.php");
         ?>

@@ -5,9 +5,12 @@
         <link rel="stylesheet" href="../styles.css"/>
     </head>
     <body onload="fetchUser()">
+        <!--Header-->
         <?php
             include("../include/header.php");
         ?>
+
+        <!--Body-->
         <main>
             <div class="container">
                 <div class="profileContainer">
@@ -37,6 +40,7 @@
             </div>
         </main>
 
+        <!--Footer-->
         <?php
             include("../include/footer.php");
         ?>

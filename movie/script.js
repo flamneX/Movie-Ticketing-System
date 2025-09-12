@@ -200,7 +200,7 @@ async function displayDetails(imdbId) {
   const buyButton = document.getElementById("buyButton");
   if (loggedUser == null) {
     buyButton.innerHTML =  `
-      <a href="/Movie-Ticketing-System/userAuthentication/index.php?movieID=${imdbId}" style="color: white; text-decoration: none;">LOG IN TO BUY</a>
+      <a href="/Movie-Ticketing-System/userAuthentication/index.php?movieID=${imdbId}" style="color: white; text-decoration: none;">LOG IN TO BUY TICKET</a>
     `;
   } 
   else {
