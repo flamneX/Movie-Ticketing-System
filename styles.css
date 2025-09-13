@@ -745,9 +745,9 @@ main {
 }
 
 .social-icons img {
-    width: 40px;  /* Adjust size to 40px */
-    height: 40px; /* Maintain square shape */
-    object-fit: contain; /* Ensure aspect ratio is maintained */
+    width: 40px; 
+    height: 40px; 
+    object-fit: contain; 
 }
 
 /* Styling for Login Form*/
