@@ -2,7 +2,7 @@
 A Website created to directly fetch movies from an external API and simulate the ticket buying process.
 
 ## The Website Includes
-- Auto fetching of movie data using API key (Current Year + 2 Years Before Animations).
+- Auto fetching of movie data using API key (Current Year + 2 Years Before).
 - Wishlist system that adds any movies into wishlist database.
 - Ticketing system that allows the user to purchase any ticket of movies that is currently airing.
 - User Authentication System where all users are required to sign up or sign in to the system to use it.
